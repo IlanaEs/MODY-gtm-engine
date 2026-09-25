@@ -1,4 +1,4 @@
-"""Deterministic mapping: deck content -> slide -> named shape in templates/MODY_GTM_Product_Launch_Template.pptx
+"""Deterministic mapping: deck content -> slide -> named shape in assets/templates/presentation/MODY_GTM_Product_Launch_Template.pptx
 (the official MODY template, 8 slides: cover + 01..07).
 
 The template owns the design; this module only says WHICH shape receives WHICH field. Shapes are addressed by the

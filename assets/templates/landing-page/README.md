@@ -1,9 +1,9 @@
 # MODY Product Page Template
 
 Fixed design for the single-file landing page (`out/<id>/landing.html`). The renderer
-(`launch/render_product_page.py`) fills the `{{slots}}` of `template.html` from the validated launch package and
+(`launch/render_product_page.py`) fills the `{{slots}}` of `mody-landing-page-template.html` from the validated launch package and
 embeds the approved photos as base64, so the file works standalone. It never changes the design: 100% of the layout,
-CSS, fonts, colours, responsive behaviour and interactions come from `template.html`.
+CSS, fonts, colours, responsive behaviour and interactions come from `mody-landing-page-template.html`.
 
 ## 1. Design system (fixed, never changes between products)
 
@@ -57,7 +57,7 @@ nothing is invented to fill a slot.
 
 ## 4. Prompt to reuse for each new product (when authoring by hand instead of the renderer)
 
-> Create a single-file HTML product landing page using `templates/product_page/template.html` as the exact template.
+> Create a single-file HTML product landing page using `assets/templates/landing-page/mody-landing-page-template.html` as the exact template.
 > Keep 100% of the design, layout, CSS, fonts, colors, responsive behavior and interactions unchanged. Replace ONLY the
 > content and images with the data below. Respect the word limits and fixed item counts. Embed images as base64 so the
 > file works standalone. Do not invent any specification that is not provided.

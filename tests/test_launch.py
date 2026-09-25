@@ -559,7 +559,7 @@ class TestDeck(Base):
     def test_official_template_untouched_and_design_preserved(self):
         from pptx import Presentation
         t_sha, t_mtime = sha(cfg.TEMPLATE_PATH), os.path.getmtime(cfg.TEMPLATE_PATH)
-        self.assertTrue(cfg.TEMPLATE_PATH.endswith("templates/MODY_GTM_Product_Launch_Template.pptx"))
+        self.assertTrue(cfg.TEMPLATE_PATH.endswith("assets/templates/presentation/MODY_GTM_Product_Launch_Template.pptx"))
         ready = ReadyFixture(self.fx)
         r = deck.render(ready.pkg, self.fx.out, ready.product)
         self.assertIsNotNone(r["pptx"], r["errors"]); self.assertTrue(r["pptx"].endswith("launch.pptx"))

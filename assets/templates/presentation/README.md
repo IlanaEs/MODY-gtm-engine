@@ -1,4 +1,9 @@
-# MODY GTM presentation template
+# MODY GTM presentation templates (`assets/templates/presentation/`)
+
+This folder is the canonical location of the PowerPoint templates. Generated content populates them; nothing is laid out
+from scratch. `MODY_Presentation_Template_V2.pptx` is the newer MODY design (16:9, 8 slides), kept here as the target for
+the next slot map; the pipeline currently renders on `MODY_GTM_Product_Launch_Template.pptx`, whose slides and shape
+names are the ones `presentation/template_map.py` addresses.
 
 `MODY_GTM_Product_Launch_Template.pptx` is the fixed design for the internal GTM deck (8 slides). The generator
 never changes it: `launch/deck.py` adapts the launch package and `presentation/render.py` opens an in-memory copy, fills the named slots listed in

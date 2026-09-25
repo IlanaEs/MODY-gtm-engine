@@ -1,12 +1,12 @@
 """Landing Page renderer: launch_package -> landing.html, a single standalone file on the fixed MODY product
-page template (templates/product_page/template.html). The template owns the design; this module only maps validated
+page template (assets/templates/landing-page/mody-landing-page-template.html). The template owns the design; this module only maps validated
 package fields into its slots and embeds the approved photos as base64. No reasoning, no invented specs: a slot
 without a source is left out, and short counts are reported as warnings."""
 import base64, html, mimetypes, os
 from validate import ROOT, get
 from launch.package import val, title, resolve_image, SCHEMA
 
-TEMPLATE_PATH = os.environ.get("MODY_PRODUCT_PAGE_TEMPLATE") or os.path.join(ROOT, "templates", "product_page", "template.html")
+TEMPLATE_PATH = os.environ.get("MODY_PRODUCT_PAGE_TEMPLATE") or os.path.join(ROOT, "assets", "templates", "landing-page", "mody-landing-page-template.html")
 PAGE_FILE = "landing.html"
 CTA_TEXT = "בדיקת זמינות ומחיר"
 STAT_ORDER = ["flow_rate_lpm", "dimensions_mm", "thickness_mm", "format_cm", "installation_type", "finish", "material", "features", "colour", "application"]

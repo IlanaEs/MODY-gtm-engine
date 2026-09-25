@@ -30,12 +30,22 @@ out/<id>/   launch_package.yaml  ← single source of truth (Skill writes it onc
 launch/     extract.py (supplier page → facts + evidence) · content_engine.py (rules | Claude → launch_package) · package.py · qa.py
             render_md.py · render_product_page.py (landing.html) · deck.py (adapter) · pipeline.py
 presentation/  template_map.py (field → slide → shape) · render.py (PPTX layer) · content.py (slot composition)
-templates/  MODY_GTM_Product_Launch_Template.pptx  ← fixed deck design (see templates/README.md)
-            product_page/template.html + README.md  ← MODY Product Page Template: landing.html design (single file, photos embedded)
+assets/templates/landing-page/  mody-landing-page-template.html + README.md  ← canonical landing-page template (landing.html)
+assets/templates/presentation/  MODY_GTM_Product_Launch_Template.pptx (slot map target) · MODY_Presentation_Template_V2.pptx · README.md  ← canonical PPTX templates
 schema/     launch_package.schema.yaml ← package model, limits, labels, QA settings
 SKILL.md    8-step pipeline (6 = launch package, 7 = QA + render)
 validate.py · qa.py · run_all.py
 ```
+
+## Templates (`assets/templates/`)
+- `assets/templates/landing-page/` holds the canonical landing-page template. `launch/render_product_page.py` fills its
+  `{{slots}}` to produce `out/<id>/landing.html`.
+- `assets/templates/presentation/` holds the canonical PowerPoint templates. `presentation/render.py` opens an in-memory copy
+  and fills the named shapes listed in `presentation/template_map.py` to produce `out/<id>/launch.pptx`.
+- Generated content populates these templates; the renderers never create a layout from scratch, and the template files
+  on disk are never modified. Override a template for one run with `MODY_PRODUCT_PAGE_TEMPLATE` / `MODY_PRESENTATION_TEMPLATE`.
+- `MODY_Presentation_Template_V2.pptx` is stored here as the newer MODY design. The slot map still targets
+  `MODY_GTM_Product_Launch_Template.pptx`; switching the deck to V2 requires a new slide/shape mapping in `template_map.py`.
 
 ## Demo: three levels of proof
 | # | Product | What it proves |

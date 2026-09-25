@@ -13,7 +13,7 @@ products/<id>.yaml ──┐
 brand/mody_brand_dna.v*.yaml ──┼──► this skill ──► out/<id>/launch_package.yaml ──► python -m launch run
 brand/<manufacturer>.v*.yaml ──┘                    (single source of truth)         ├── launch.qa (schema · content · provenance · assets)
                                                                                      ├── landing.md · landing.html (MODY Product Page Template)
-                                                                                     ├── deck.md · launch.pptx (templates/MODY_GTM_Product_Launch_Template.pptx)
+                                                                                     ├── deck.md · launch.pptx (assets/templates/presentation/)
                                                                                      ├── sales.md · provenance.yaml
                                                                                      └── qa.py (32 checks on the rendered markdown) ──► PASS / FAIL
 ```
@@ -32,7 +32,7 @@ It executes every step below without manual editing: fetch + extract the visible
 with `source: product_page` + the evidence line; unknown = null, never inferred) → `products/<id>.yaml` → validate →
 content engine (`launch/content_engine.py`: Claude with these step-6 instructions when the API is available, else the
 deterministic rules engine; either way QA-gated) → `out/<id>/launch_package.yaml` → package QA + readiness → `landing.html`
-(MODY Product Page Template) + `launch.pptx` (`templates/MODY_GTM_Product_Launch_Template.pptx`) → `qa.py` → reports.
+(MODY Product Page Template) + `launch.pptx` (`assets/templates/presentation/`) → `qa.py` → reports.
 Steps 1-8 describe what that command does, and remain the procedure when a step is run by hand.
 (`python -m launch intake` writes only the product file, for products whose facts are entered manually.)
 
@@ -198,7 +198,7 @@ Run `python -m launch run products/<id>.yaml`. It runs, in this order, and never
    into the package's `qa` block (`passed` / `passed_with_warnings` / `failed`, `errors[{code, field, message}]`).
    `failed` → **nothing is rendered.** Fix the reported field and run again.
 2. **Renderers**, each isolated: `landing.md` + `deck.md` + `sales.md` + `provenance.yaml` (6a–6c, step 8), `landing.html`,
-   `landing.html` from the fixed MODY Product Page Template (`templates/product_page/`, photos embedded), `launch.pptx` from the
+   `landing.html` from the fixed MODY Product Page Template (`assets/templates/landing-page/`, photos embedded), `launch.pptx` from the
    fixed deck template. A renderer failure keeps the package and the other assets.
 3. `qa.py` (the 32 landing checks) on the rendered markdown, as a regression guard on the renderer.
 - `FAIL` in either QA → fix the specific field in `launch_package.yaml` and run again. You get up to 2 fix rounds. If it
