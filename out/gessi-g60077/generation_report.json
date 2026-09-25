@@ -1,0 +1,90 @@
+{
+  "product": "gessi-g60077",
+  "generated": "2026-09-26",
+  "package": "generated",
+  "qa": {
+    "status": "not_ready",
+    "errors": [
+      {
+        "code": "MISSING_HERO_IMAGE",
+        "field": "product.assets.hero_image",
+        "message": "no product image in sources.image"
+      }
+    ],
+    "warnings": [],
+    "checks": {
+      "schema": "PASS",
+      "facts_match_sources": "PASS",
+      "sources": "PASS",
+      "required_content": "PASS",
+      "benefits": "PASS",
+      "hero": "PASS",
+      "readiness": "FAIL",
+      "deck_structure": "PASS",
+      "limits": "PASS",
+      "content_rules": "PASS",
+      "provenance": "PASS"
+    }
+  },
+  "readiness": {
+    "status": "not_ready",
+    "blockers": [
+      "MISSING_HERO_IMAGE: no product image in sources.image"
+    ]
+  },
+  "landing": "not_ready",
+  "markdown": "generated",
+  "deck": "not_ready",
+  "markdown_qa": "PASS",
+  "files": {
+    "markdown": [
+      "landing.md",
+      "deck.md",
+      "sales.md",
+      "provenance.yaml"
+    ]
+  },
+  "errors": [
+    "MISSING_HERO_IMAGE product.assets.hero_image: no product image in sources.image"
+  ],
+  "warnings": [],
+  "report": "/Users/ilanaestrin/Desktop/mody/mody-launch/out/gessi-g60077/generation_report.json",
+  "markdown_qa_detail": {
+    "status": "PASS",
+    "checks": {
+      "files_present": "PASS",
+      "provenance_valid": "PASS",
+      "provenance_shape": "PASS",
+      "voice_landing.md": "PASS",
+      "voice_deck.md": "PASS",
+      "voice_sales.md": "PASS",
+      "constraints_landing.md": "PASS",
+      "constraints_deck.md": "PASS",
+      "constraints_sales.md": "PASS",
+      "line_isolation_landing.md": "PASS",
+      "line_isolation_deck.md": "PASS",
+      "line_isolation_sales.md": "PASS",
+      "headline_length": "PASS",
+      "deck_structure": "PASS",
+      "landing_structure": "PASS",
+      "sales_structure": "PASS",
+      "flags_in_landing.md": "PASS",
+      "flags_in_deck.md": "PASS",
+      "flags_in_sales.md": "PASS",
+      "price_exact": "PASS",
+      "no_invented_numbers": "PASS",
+      "provenance_refs_resolve": "PASS",
+      "claims_used_integrity": "PASS",
+      "provenance_bound": "PASS",
+      "positioning": "PASS",
+      "versions_match": "PASS",
+      "draft_banner_landing.md": "PASS",
+      "draft_banner_deck.md": "PASS",
+      "draft_banner_sales.md": "PASS",
+      "qa_footer_landing.md": "PASS",
+      "qa_footer_deck.md": "PASS",
+      "qa_footer_sales.md": "PASS"
+    },
+    "fails": []
+  }
+}

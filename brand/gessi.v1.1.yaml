@@ -1,0 +1,45 @@
+meta:
+  id: gessi
+  version: "1.1"
+  updated: 2026-09-24
+  layer: manufacturer          # קובץ לכל יצרן: gessi / agape / mutina / cea / stosa
+  relationship: MODY – יבואן בלעדי בישראל
+  sources:
+    - https://www.gessi.com/en/bath/jacqueline
+    - https://www.gessi.com/us/haute-culture/jacqueline
+    - https://www.gessi.com/us/news-and-events/jacqueline
+    - https://www.ynet.co.il/architecture/article/syjcn004gge
+
+identity: יצרנית איטלקית של ברזים ופתרונות Wellness לחדר הרחצה. מתמקדת בעיבוד מתכת ובמלאכת יד.
+local_presence: Gessi Casa, חלל ייעודי באולם התצוגה של MODY
+
+voice_extension:
+  vocabulary: [Made in Italy, עיצוב איטלקי, חדר רחצה ומטבח]   # v1.1: רק מילים שנכונות לכל קו
+  angle: חדר הרחצה כמרחב אישי וחושי, לא כחלל טכני
+  cross_sell: Total Look, התאמה של כל הסדרה (ברזים ואביזרים) באותה שפה
+
+lines:
+  haute_culture:
+    description: הקו הניסיוני של Gessi. מלאכת יד וחומרים יוצאי דופן, לא לייצור המוני.
+    vocabulary: [מלאכת יד, Haute Culture, טקס יומי, חומר]   # v1.1: הועבר מרמת היצרן
+    collections:
+      jacqueline:
+        story_line: Haute couture לחדר הרחצה. חומר טבעי, יד אומן, ואין שניים זהים.
+        approved_claims:
+          - { id: JQ-1, claim: הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי,
+              source: https://www.gessi.com/en/bath/jacqueline }
+          - { id: JQ-2, claim: כל שורש נבחר ידנית לפי קוטר ומרווח בין הפרקים,
+              source: https://www.gessi.com/us/news-and-events/jacqueline }
+          - { id: JQ-3, claim: הבמבוק מעובד באדים ומשולב במתכת בעבודת יד. כל פריט ייחודי,
+              source: https://www.gessi.com/us/haute-culture/jacqueline }
+          - { id: JQ-4, claim: הידיות בהשראת סוגרי תיקים ואביזרי אופנה,
+              source: https://www.gessi.com/us/haute-culture/jacqueline }
+          - { id: JQ-5, claim: כמו בגד תפור, תהליך ידני שאינו מתאים לייצור המוני,
+              source: https://www.gessi.com/en/bath/jacqueline }
+
+constraints:
+  - אסור לכתוב טענות עמידות למים או תחזוקה של הבמבוק בלי נתון מהיצרן. שדה care חסר = דגל.
+  - שונות בגוון בין פריטים היא תכונה ולא פגם. מותר לציין אותה (JQ-3).
+
+changelog:
+  - { version: "1.1", date: 2026-09-24, note: גרסה ראשונה, Haute Culture / Jacqueline }

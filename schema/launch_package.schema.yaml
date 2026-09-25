@@ -1,0 +1,166 @@
+# Launch Package Schema – v1.0
+# out/<id>/launch_package.yaml הוא מקור האמת היחיד של ההשקה: ה-Skill כותב אותו פעם אחת, QA מאמת אותו, וכל נכס
+# (landing.md / landing.html / deck.md / sales.md / provenance.yaml / launch.pptx) מרונדר ממנו דטרמיניסטית.
+# עובדה = { value, source } (source = מפתח מתוך product sources / קובץ שכבה). שדה נגזר = { value, derived_from: [ref] }.
+# ref באותה דקדוק של claims_used: claim:<id> · spec:<field> · commercial:price_ils · house:<P|A|key> · brand:<key>
+
+schema_version: "1.0"
+
+sections:                       # required top-level sections (QA: MISSING_SECTION)
+  - meta
+  - product
+  - strategy
+  - messaging
+  - story
+  - benefits
+  - sales
+  - landing
+  - deck
+  - sources
+
+structure:
+  meta:            { product: slug, generated: date, skill_version: string, brand_versions: { house, manufacturer },
+                     validator_status: enum, publishable: bool, publish_blockers: list, flags: list, draft_banner: "string|null" }
+  product:
+    facts:         # name, brand, brand_id, collection, line, model, category, category_label, designer, price, price_tier, availability, launch_status
+                   # each { value, source }; value null = missing (flag in meta.flags). price adds display (house format)
+    specs:         # [{ field, label, value, source, ref, flag }] – category profile order, then extra technical fields
+    assets:        { hero_image: { path, source, exists, approved, format } }   # sources.image + sources.image_approved; approved = exists ∧ signed ∧ format ok
+    summary:       { value, derived_from }          # 1-2 sentences for the deck overview
+  strategy:
+    positioning:        { value, derived_from }
+    value_proposition:  { value, derived_from }
+    customer_need:      { value, derived_from }
+    consumer_insight:   { value, derived_from }
+    differentiators:    [{ value, derived_from }]
+    audience_rule:      string                      # SKILL step 5: "price_tier=signature → A, B"
+    target_audiences:   [{ id, segment, decision_driver, needs_line, need, relevance, derived_from }]
+    pillars:            [{ id, name, support, refs }]            # 2-3, each backed by the claim set
+    spec_to_benefit:    [{ from, display, benefit, ref }]        # SKILL step 5 table
+    notes:              mapping                                  # free reasoning notes (provenance.positioning extras)
+  messaging:       { headline: { value, derived_from }, one_liner: { value, derived_from }, tone: list, key_messages: [{ value, derived_from }] }
+  story:           { value: "string|null", claims: [{ text, ref }], derived_from }   # null when no collection block
+  benefits:        [{ title, text, fact, ref, claims: [{ text, ref }], derived_from }]   # exactly 3
+  sales:
+    opening:            { value, ref }
+    architect_points:   [{ text, ref }]
+    private_points:     [{ text, ref }]
+    faq:                [{ q, a, flag }]
+    dont_say:           [string]
+    key_talking_points: [string]                    # 3 – deck slide 6 / seller "remember"
+    seller_cheat_sheet: { positioning, private_customer, professional_customer, derived_from }
+    when_to_recommend:  [string]
+  landing:
+    hero:               { headline: ref, sub: ref, image: ref }
+    sections:           [story, benefits, details, mody]
+    product_details:    [{ label, value, ref, source }]
+    mody_section:       { value, claims: [{ text, ref }] }
+  deck:
+    cover:              { source_fields: list, notes }
+    slides:             [{ id, type, source_fields, notes }]    # 7, fixed order (deck_slides below); deck.md and launch.pptx render the same 8
+    launch_plan:        [{ stage, action, status, owner }]      # pipeline facts, computed by the skeleton (4 template stages)
+    next_step:          { owner, status, launch_date, open_decisions }   # the template's NEXT STEP line, facts / flags only
+  sources:         { house, manufacturer, product_sources: mapping }
+  qa:              { status: passed|passed_with_warnings|not_ready|failed, errors: [{ code, field, message }], warnings: [...] }
+                   # not_ready = content valid, final assets (landing.html, launch.pptx) blocked by the hero image
+
+deck_slides:                     # cover + 7 content slides; types are fixed, the template decides the design
+  - { id: "01", type: product_overview,  source_fields: [product.facts, product.specs, product.summary] }
+  - { id: "02", type: positioning,       source_fields: [strategy.positioning, strategy.value_proposition, strategy.customer_need, strategy.consumer_insight, strategy.differentiators] }
+  - { id: "03", type: target_audience,   source_fields: [strategy.target_audiences] }
+  - { id: "04", type: brand_messaging,   source_fields: [messaging.headline, messaging.one_liner, messaging.tone, messaging.key_messages] }
+  - { id: "05", type: product_story,     source_fields: [story, benefits] }
+  - { id: "06", type: seller_cheat_sheet, source_fields: [sales.seller_cheat_sheet, sales.key_talking_points, sales.when_to_recommend] }
+  - { id: "07", type: launch_plan,       source_fields: [deck.launch_plan, deck.next_step] }
+deck_cover_fields: [product.facts.name, product.facts.brand, product.facts.collection, messaging.one_liner, product.assets.hero_image]
+deck_roles: [סקירת מוצר, מיצוב, קהל יעד, מסר מותג, סיפור מוצר ותועלות, כלים למכירה, תוכנית השקה]   # slide headings in deck.md (qa.py DECK_ROLES)
+
+derived_fields:                  # every one needs derived_from with resolvable refs (QA: MISSING_DERIVATION)
+  - product.summary
+  - strategy.positioning
+  - strategy.value_proposition
+  - strategy.customer_need
+  - strategy.consumer_insight
+  - strategy.differentiators.*
+  - strategy.target_audiences.*
+  - messaging.headline
+  - messaging.one_liner
+  - messaging.key_messages.*
+  - story
+  - benefits.*
+  - sales.seller_cheat_sheet
+
+limits:                          # presentation, not report (word / sentence / item limits)
+  messaging.one_liner:                 { max_words: 12 }
+  messaging.headline:                  { max_words: 8, warn_min_words: 3 }
+  messaging.tone:                      { min_items: 1, max_items: 6 }
+  messaging.key_messages:              { min_items: 1, max_items: 3, item_max_words: 15 }
+  product.summary:                     { max_words: 30, max_sentences: 2 }
+  strategy.positioning:                { max_words: 30, max_sentences: 2 }
+  strategy.value_proposition:          { max_words: 20, max_sentences: 1 }
+  strategy.customer_need:              { max_words: 25, max_sentences: 2 }
+  strategy.consumer_insight:           { max_words: 20, max_sentences: 1 }
+  strategy.differentiators:            { min_items: 1, max_items: 3, item_max_words: 25 }
+  strategy.target_audiences:           { min_items: 1, max_items: 3 }
+  strategy.target_audiences.*.need:    { max_words: 25, max_sentences: 2 }
+  strategy.target_audiences.*.relevance: { max_words: 20, max_sentences: 1 }
+  strategy.pillars:                    { min_items: 2, max_items: 3 }
+  story:                               { max_words: 80, warn_min_words: 40, max_sentences: 4 }
+  benefits:                            { min_items: 3, max_items: 3 }
+  sales.key_talking_points:            { min_items: 1, max_items: 3, item_max_words: 30 }
+  sales.seller_cheat_sheet.positioning: { max_words: 30, max_sentences: 2 }
+  sales.seller_cheat_sheet.private_customer: { max_words: 30, max_sentences: 2 }
+  sales.seller_cheat_sheet.professional_customer: { max_words: 30, max_sentences: 2 }
+  sales.when_to_recommend:             { min_items: 3, max_items: 5, item_max_words: 12 }
+  deck.launch_plan:                    { min_items: 4, max_items: 4 }
+
+image_formats: [png, jpg, jpeg]
+image_missing_file: error         # production: a missing / unapproved / unsupported hero image blocks the FINAL assets (status not_ready)
+mody_source_prefixes: [mody, internal, assignment]     # a commercial / internal fact needs a MODY source key
+
+category_labels:
+  basin_mixer: ברז לכיור
+  kitchen_mixer: ברז מטבח
+  shower_system: מערכת מקלחת
+  bath_mixer: ברז לאמבט
+  accessory: אביזר
+  tile: אריח
+  sanitaryware: כלים סניטריים
+  kitchen: מטבח
+  flooring: ריצוף
+
+field_labels:
+  signature_material: חומר חתימה
+  material: חומר
+  finish: גימור
+  features: מאפיינים
+  technologies: טכנולוגיות
+  dimensions_mm: מידות (מ"מ)
+  flow_rate_lpm: ספיקה (ל/דק)
+  installation_type: סוג התקנה
+  format_cm: פורמט (ס"מ)
+  thickness_mm: עובי (מ"מ)
+  colour: צבע
+  application: יישום
+  technical_requirements: דרישות טכניות
+  certifications: תקנים ואישורים
+  warranty: אחריות
+  sku: מספר פריט (יצרן)
+
+detail_labels:            # deck overview details
+  brand: מותג
+  collection: קולקציה
+  line: קו
+  model: מק"ט
+  category: קטגוריה
+  price: מחיר
+  price_tier: דרגת מחיר
+  launch_status: סטטוס השקה
+  availability: זמינות
+
+launch_stages: [נכסים, הכשרה, ערוצים, מדידה]     # the template's ASSETS / ENABLEMENT / CHANNELS / MEASURE
+launch_stage_owner_default: מנהל/ת מוצר
+placeholder_patterns: ["lorem ipsum", "\\bTODO\\b", "\\[insert", "\\bxxx+\\b", "\\bTBD\\b", "\\{\\{.*?\\}\\}", "\\[(?!חסר:)[A-Za-z][^\\]]*\\]"]   # last: a bracketed template placeholder such as [Owner]; never a MODY flag
+
+changelog:
+  - { version: "1.0", date: 2026-09-25, note: "מקור אמת יחיד להשקה: החליף את presentation.yaml ואת כתיבת landing/deck/sales בנפרד" }

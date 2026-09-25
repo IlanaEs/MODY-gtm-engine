@@ -1,0 +1,43 @@
+meta:
+  id: mutina
+  version: "1.0"
+  updated: 2026-09-24
+  layer: manufacturer
+  relationship: MODY – יבואן בלעדי בישראל
+  sources:
+    - https://www.mutina.it/en/collection/bas-relief-by-patricia-urquiola
+    - https://www.mutina.it/en/designers/patricia-urquiola
+    - https://www.ynet.co.il/architecture/article/syjcn004gge
+    - https://www.haaretz.co.il/labels/2026-05-20/ty-article-labels/0000019e-4505-d0ff-afbe-4745a8470002
+
+identity: מותג אריחי עיצוב איטלקי שעובד עם מעצבים ואדריכלים מובילים
+local_presence: MODY ו-Mutina מקיימות יחד תחרות אדריכלות בשבוע העיצוב במילאנו
+
+voice_extension:
+  vocabulary: [חומר, מעצב/ת, עבודת יד, אור וצל, משטח]
+  angle: האריח כמשטח אדריכלי ולא ככיסוי. הקיר הוא חלק מהעיצוב
+  cross_sell: שילוב של כמה דוגמאות מאותה קולקציה באותו חלל
+
+lines:
+  default:
+    collections:
+      bas-relief:
+        story_line: אמנות התבליט העתיקה, בעבודת יד, בעיצוב Patricia Urquiola
+        approved_claims:
+          - { id: MB-1, claim: קולקציה בעבודת יד שבה אמנות התבליט העתיקה היא הגיבורה, בארבע דוגמאות,
+              source: https://www.mutina.it/en/collection/bas-relief-by-patricia-urquiola }
+          - { id: MB-2, claim: חמר פורצלן שעובר שיחול (extrusion) בעבודת יד,
+              source: https://www.mutina.it/en/collection/bas-relief-by-patricia-urquiola }
+          - { id: MB-3, claim: עומקים משתנים יוצרים משחק של אור וצל,
+              source: https://www.mutina.it/en/collection/bas-relief-by-patricia-urquiola }
+          - { id: MB-4, claim: ללא תרכובות אורגניות נדיפות (VOC),
+              source: https://www.mutina.it/en/collection/bas-relief-by-patricia-urquiola }
+          - { id: MB-5, claim: עיצוב Patricia Urquiola, אדריכלית ומעצבת ספרדייה,
+              source: https://www.mutina.it/en/designers/patricia-urquiola }
+
+constraints:
+  - אסור לכתוב שהאריח מתאים לרצפה, לחוץ או לאזור רטוב בלי שדה application מאומת.
+  - אסור לכתוב "ידידותי לסביבה" באופן כללי. מותר רק MB-4, בניסוח המדויק שלו.
+
+changelog:
+  - { version: "1.0", date: 2026-09-24, note: גרסה ראשונה, Bas-Relief }

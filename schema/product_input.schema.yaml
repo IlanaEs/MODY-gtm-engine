@@ -1,0 +1,110 @@
+# Product Input Schema – v1.1
+# כל מוצר נכנס במבנה הזה בדיוק. הקלט מכיל עובדות בלבד. פרשנות שיווקית נוצרת ב-Skill.
+
+schema_version: "1.2"
+
+# ── מבנה ──────────────────────────────────────────────
+# שדה עובדתי נכתב כ- { value: ..., source: <key מתוך sources> }
+# ערך בלי source = לא מאומת = דגל.
+
+structure:
+  product:
+    id:            { type: slug,   required: true }   # v1.1: מזהה יציב לכל מוצר
+    name:          { type: string, required: true }
+    brand:         { type: string, required: true, must_match: "brand/<brand>.v*.yaml" }
+    collection:    { type: string, required: false }
+    line:          { type: string, required: false }
+    category:      { type: enum, required: true,
+                     values: [basin_mixer, kitchen_mixer, shower_system, bath_mixer,
+                              accessory, tile, sanitaryware, kitchen, flooring] }
+    model_number:  { type: string, required: false }  # v1.1: לא לכל קטגוריה יש מק"ט ציבורי
+    designer:      { type: string, required: false }
+
+  technical:       # כל שדה: { value, source }
+    material:          { required: false }
+    finish:            { required: false }   # { code, name }
+    dimensions_mm:     { required: false }
+    flow_rate_lpm:     { required: false }
+    installation_type: { required: false }
+    features:          { required: false, type: list }
+    technologies:      { required: false, type: list }
+    technical_requirements: { required: false }      # v1.2: e.g. working pressure / temperature, as stated by the supplier
+    certifications:    { required: false, type: list }  # v1.2: only when a verified source states them
+    warranty:          { required: false }            # v1.2: as stated by the supplier / MODY
+    sku:               { required: false }            # v1.2: supplier article / reference number (model_number stays the public model)
+
+  design:
+    signature_material: { required: false }            # { value, source }
+    claims_ref:         { required: false, type: list } # מזהים מ-approved_claims של היצרן
+
+  commercial:
+    price_ils:   { required: false }   # { value, source }
+    price_tier:  { required: false, values: [core, premium, signature] }
+
+  sources:
+    product_page:    { type: url,  required: true }
+    technical_sheet: { type: url|path, required: false }
+    image:           { type: path, required: false, publish_required: true }
+    image_approved:  { type: bool, required: false }
+    images:          { type: list, required: false }   # v1.2: תמונות נוספות מאושרות (עד 3) לגלריית דף המוצר; אופציונלי   # v1.2: אישור MODY לתמונה. בלי true (וקובץ קיים בפורמט נתמך) אין רינדור סופי (launch.pptx / landing.html)
+
+  brand_versions:    # אופציונלי: נעיצה מפורשת של גרסה, למשל "gessi@1.0". בלי נעיצה נבחרת הגרסה הגבוהה ביותר.
+                     # הגרסאות שנפתרו בפועל נרשמות אוטומטית ב-out/<id>/provenance.yaml (brand_versions), לא כאן.
+    house:        { required: false }
+    manufacturer: { required: false }
+
+# ── כללי ולידציה ───────────────────────────────────────
+validation:
+  required_fields:              # בלעדיהם אין יצירה (BLOCKED)
+    - product.id
+    - product.name
+    - product.brand
+    - product.category
+    - sources.product_page
+
+  publish_required:             # בלעדיהם אפשר ליצור טיוטה, אבל לא לפרסם
+    - sources.image
+    - product.model_number
+    - commercial.price_ils
+
+  # v1.1: השדות הצפויים נקבעים לפי קטגוריה ולא לפי מה שהכותב זכר לרשום כ-null.
+  # שדה צפוי שחסר מהקלט (או null) = דגל.
+  category_profiles:
+    _faucet: &faucet [finish, features, dimensions_mm, flow_rate_lpm, installation_type]
+    basin_mixer:   *faucet
+    kitchen_mixer: *faucet
+    bath_mixer:    *faucet
+    shower_system: [finish, features, dimensions_mm, flow_rate_lpm, installation_type]
+    tile:          [material, format_cm, thickness_mm, colour, application]
+    sanitaryware:  [material, finish, dimensions_mm, installation_type]
+    accessory:     [material, finish, dimensions_mm, installation_type]
+    flooring:      [material, format_cm, thickness_mm, colour, application]
+    kitchen:       [material, finish, dimensions_mm]
+
+  min_verified_specs: 2          # לפחות 2 שדות technical עם source תקין
+
+  source_must_resolve: true      # כל source חייב להיות key קיים ב-sources
+
+  claims_must_exist: true        # כל claims_ref חייב להופיע בקובץ היצרן
+
+  manufacturer_layer_required: true   # אין brand file = אין הרצה
+
+  # שדות שלא נכנסים לקלט, כי ה-Skill גוזר אותם מה-Brand DNA:
+  derived_not_input:
+    - target_audience
+    - value_proposition
+    - style / tone
+
+  missing_value_marker: "[חסר: {field} – לבדיקה]"
+
+# ── סטטוס ────────────────────────────────────────────
+status:
+  BLOCKED:           "חסר שדה חובה / אין קובץ יצרן / פחות מ-2 specs מאומתים"
+  # בנוסף לסטטוס: publishable = true/false (לפי publish_required)
+  READY_WITH_FLAGS:  "אפשר להריץ; שדות אופציונליים חסרים יסומנו בפלט"
+  READY:             "הכול מאומת"
+
+changelog:
+  - { version: "1.0", date: 2026-09-24, note: גרסה ראשונה }
+  - { version: "1.1", date: 2026-09-24, note: "id חובה, model_number ו-image עברו ל-publish_required, category_profiles. מקור: ההרצה על מוצרים 2 ו-3" }
+  - { version: "1.2", date: 2026-09-25, note: "sources.image_approved: תמונת מוצר מאושרת היא קלט חובה לרינדור הסופי (launch package readiness)" }

@@ -1,0 +1,511 @@
+meta:
+  product: mutina-basrelief-patchwork
+  generated: '2026-09-25'
+  skill_version: 1.1.0
+  brand_versions:
+    house: brand/mody_brand_dna.v1.0.yaml
+    manufacturer: brand/mutina.v1.0.yaml
+  validator_status: READY_WITH_FLAGS
+  publishable: false
+  publish_blockers:
+  - sources.image
+  - product.model_number
+  - commercial.price_ils
+  flags:
+  - '[חסר: technical.application – לבדיקה]'
+  - '[חסר: sources.image – לבדיקה]'
+  - '[חסר: product.model_number – לבדיקה]'
+  - '[חסר: commercial.price_ils – לבדיקה]'
+  draft_banner: 'טיוטה – לא לפרסום. חסר: sources.image, product.model_number, commercial.price_ils'
+product:
+  facts:
+    name:
+      value: Bas-Relief Patchwork
+      source: product_page
+    collection:
+      value: Bas-Relief
+      source: product_page
+    line:
+      value: null
+      source: null
+    model:
+      value: null
+      source: null
+    designer:
+      value: Patricia Urquiola
+      source: product_page
+    brand:
+      value: MUTINA
+      source: product_page
+    brand_id:
+      value: mutina
+      source: product_page
+    category:
+      value: tile
+      source: product_page
+    category_label:
+      value: אריח
+      source: product_page
+    price:
+      value: null
+      display: null
+      source: null
+    price_tier:
+      value: premium
+      source: mody_internal
+    availability:
+      value: null
+      source: null
+    launch_status:
+      value: null
+      source: null
+  specs:
+  - field: signature_material
+    label: חומר חתימה
+    value: Handmade bas-relief pattern
+    source: collection_page
+    ref: spec:signature_material
+    flag: null
+  - field: material
+    label: חומר
+    value: Porcelain clays, artisanally extruded
+    source: collection_page
+    ref: spec:material
+    flag: null
+  - field: format_cm
+    label: פורמט (ס"מ)
+    value: 18×54
+    source: collection_page
+    ref: spec:format_cm
+    flag: null
+  - field: thickness_mm
+    label: עובי (מ"מ)
+    value: '9'
+    source: collection_page
+    ref: spec:thickness_mm
+    flag: null
+  - field: colour
+    label: צבע
+    value: White · Powder · Black
+    source: collection_page
+    ref: spec:colour
+    flag: null
+  - field: application
+    label: יישום
+    value: null
+    source: null
+    ref: null
+    flag: '[חסר: technical.application – לבדיקה]'
+  assets:
+    hero_image:
+      path: null
+      source: null
+      exists: false
+      approved: false
+      format: null
+  summary:
+    value: אריח תבליט בעבודת יד מקולקציית Bas-Relief של Mutina, בעיצוב Patricia Urquiola, בפורמט 18×54 ובשלושה צבעים.
+    derived_from:
+    - claim:MB-1
+    - claim:MB-5
+    - spec:format_cm
+    - spec:colour
+strategy:
+  positioning:
+    value: לא כיסוי לקיר, אלא משטח אדריכלי בעבודת יד. תבליט שבו האור והצל משתנים לאורך היום.
+    derived_from:
+    - brand:identity
+    - claim:MB-3
+    - house:P1
+  value_proposition:
+    value: קיר שמשתנה עם האור, בחומר עם נוכחות ולא בהדפס.
+    derived_from:
+    - claim:MB-3
+    - spec:material
+  customer_need:
+    value: פריט שמגדיר את החלל ונשאר מעניין לאורך זמן.
+    derived_from:
+    - house:B
+    - house:P3
+  consumer_insight:
+    value: בפרויקט ברמה גבוהה מחפשים קיר אחד שמדברים עליו.
+    derived_from:
+    - house:B
+    - house:A
+  differentiators:
+  - value: תבליט בעבודת יד בעיצוב Patricia Urquiola, בארבע דוגמאות שאפשר לשלב באותו חלל.
+    derived_from:
+    - claim:MB-1
+    - claim:MB-5
+    - brand:cross_sell
+  audience_rule: price_tier=premium → B, A
+  target_audiences:
+  - id: B
+    segment: לקוחות פרטיים בבנייה או שיפוץ ברמה גבוהה
+    decision_driver: פריט שמגדיר את החלל · איכות לאורך זמן
+    needs_line: צריכים השראה, ביטחון ברכישה וליווי
+    need: קיר אחד שמגדיר את החלל, באיכות שנשמרת לאורך זמן.
+    relevance: עבודת יד איטלקית, עם ליווי של MODY מהבחירה ועד ההתקנה.
+    derived_from:
+    - house:B
+    - house:P3
+  - id: A
+    segment: אדריכלים ומעצבי פנים
+    decision_driver: ייחודיות · סיפור להציג ללקוח · גימורים וזמינות
+    needs_line: צריכים נתונים מדויקים וסיפור להציג ללקוח
+    need: משטח עם סיפור עיצובי להציג ללקוח, ונתונים מדויקים לתכנון.
+    relevance: מותג שעובד עם מעצבים ואדריכלים מובילים, ושותף של MODY בתחרות אדריכלות במילאנו.
+    derived_from:
+    - house:A
+  pillars:
+  - id: P1
+    name: עיצוב מוקפד
+    support: אמנות התבליט בעבודת יד (MB-1)
+    refs:
+    - claim:MB-1
+  - id: P2
+    name: השראה בינלאומית
+    support: Patricia Urquiola (MB-5)
+    refs:
+    - claim:MB-5
+  - id: P3
+    name: איכות וגימור
+    support: חמר פורצלן בשיחול ידני (MB-2)
+    refs:
+    - claim:MB-2
+  spec_to_benefit:
+  - from: MB-3
+    display: Bas-relief, עומקים משתנים (MB-3)
+    benefit: קיר שמשתנה עם האור
+    ref: claim:MB-3
+  - from: technical.material
+    display: Porcelain clays, artisanally extruded
+    benefit: חומר עם נוכחות, לא הדפס
+    ref: spec:material
+  - from: technical.format_cm + colour
+    display: 18×54, White / Powder / Black
+    benefit: גמישות בהתאמה לחלל
+    ref: spec:format_cm
+  - from: MB-4
+    display: ללא VOC (MB-4)
+    benefit: שקט נפשי לגבי החומר
+    ref: claim:MB-4
+  notes:
+    collection_match: lines.default.collections.bas-relief (no line in input → default, case-insensitive)
+messaging:
+  headline:
+    value: תבליט עתיק, בידיים של Patricia Urquiola
+    derived_from: &id001
+    - brand:local_presence
+    - claim:MB-1
+    - claim:MB-2
+    - claim:MB-3
+    - claim:MB-4
+    - claim:MB-5
+    - house:P5
+    - spec:colour
+    - spec:format_cm
+    - spec:thickness_mm
+  one_liner:
+    value: אריח שבו האור והצל הם חלק מהעיצוב.
+    derived_from: *id001
+  tone:
+  - אלגנטי
+  - בטוח
+  - שקט
+  - מדויק
+  key_messages:
+  - value: תבליט בעבודת יד, לא הדפס.
+    derived_from: &id002
+    - claim:MB-2
+    - claim:MB-3
+    - claim:MB-1
+    - claim:MB-5
+  - value: האור והצל הם חלק מהעיצוב.
+    derived_from: *id002
+  - value: עיצוב Patricia Urquiola, בארבע דוגמאות.
+    derived_from: *id002
+story:
+  value: Bas-Relief היא קולקציה בעבודת יד, שבה אמנות התבליט העתיקה היא הגיבורה, בארבע דוגמאות. החומר הוא חמר פורצלן
+    שעובר שיחול בעבודת יד. את הקולקציה עיצבה Patricia Urquiola, אדריכלית ומעצבת ספרדייה.
+  claims:
+  - text: קולקציה בעבודת יד, שבה אמנות התבליט העתיקה היא הגיבורה, בארבע דוגמאות
+    ref: claim:MB-1
+  - text: חמר פורצלן שעובר שיחול בעבודת יד
+    ref: claim:MB-2
+  - text: Patricia Urquiola, אדריכלית ומעצבת ספרדייה
+    ref: claim:MB-5
+  derived_from:
+  - claim:MB-1
+  - claim:MB-2
+  - claim:MB-5
+  expected: true
+benefits:
+- title: קיר שמשתנה עם האור.
+  text: העומקים המשתנים בתבליט יוצרים משחק של אור וצל לאורך היום.
+  fact: עומקים משתנים יוצרים משחק של אור וצל
+  ref: claim:MB-3
+  claims:
+  - text: העומקים המשתנים בתבליט יוצרים משחק של אור וצל
+    ref: claim:MB-3
+  derived_from:
+  - claim:MB-3
+- title: חומר שעבר דרך ידיים.
+  text: חמר פורצלן בשיחול ידני, ולא הדפס על משטח חלק.
+  fact: Porcelain clays, artisanally extruded
+  ref: spec:material
+  claims: []
+  derived_from:
+  - spec:material
+- title: ללא VOC.
+  text: הקולקציה לא מכילה תרכובות אורגניות נדיפות.
+  fact: ללא תרכובות אורגניות נדיפות (VOC)
+  ref: claim:MB-4
+  claims:
+  - text: ללא VOC
+    ref: claim:MB-4
+  derived_from:
+  - claim:MB-4
+sales:
+  opening:
+    value: זה Bas-Relief של Mutina, בעיצוב Patricia Urquiola. אמנות התבליט העתיקה, בחמר פורצלן שעובד ביד.
+    ref: null
+    claims: []
+  architect_points:
+  - text: שם של מעצבת שהלקוח מכיר, וסיפור שקל להציג.
+    ref: null
+    claims: []
+  - text: ארבע דוגמאות באותה קולקציה. אפשר לשלב כמה דוגמאות באותו חלל.
+    ref: brand:cross_sell
+    claims:
+    - text: אפשר לשלב כמה דוגמאות באותו חלל
+      ref: brand:cross_sell
+  - text: פורמט 18×54, עובי 9 מ"מ, שלושה גוונים.
+    ref: null
+    claims: []
+  private_points:
+  - text: הקיר משתנה עם האור לאורך היום.
+    ref: null
+    claims: []
+  - text: כל אריח עבר שיחול בעבודת יד.
+    ref: null
+    claims: []
+  - text: הקולקציה ללא VOC.
+    ref: null
+    claims: []
+  faq:
+  - q: אפשר לשים את זה ברצפה? במקלחת?
+    a: 'נבדוק ונחזור אלייך. [חסר: technical.application – לבדיקה]'
+    flag: '[חסר: technical.application – לבדיקה]'
+  - q: מה המחיר למ"ר?
+    a: 'נבדוק ונחזור אלייך. [חסר: commercial.price_ils – לבדיקה]'
+    flag: '[חסר: commercial.price_ils – לבדיקה]'
+  - q: מה המק"ט להזמנה?
+    a: 'נבדוק ונחזור אלייך. [חסר: product.model_number – לבדיקה]'
+    flag: '[חסר: product.model_number – לבדיקה]'
+  - q: יש תמונה לשלוח ללקוח?
+    a: 'נבדוק ונחזור אלייך. [חסר: sources.image – לבדיקה]'
+    flag: '[חסר: sources.image – לבדיקה]'
+  - q: יש גוונים נוספים?
+    a: 'כן: White, Powder ו-Black.'
+    flag: null
+  dont_say:
+  - '"מתאים לרצפה", "מתאים למקלחת" או "מתאים לחוץ" (אין שדה application מאומת)'
+  - '"ידידותי לסביבה" (מותר רק "ללא VOC")'
+  - '"הכי מיוחד בשוק"'
+  key_talking_points:
+  - זה Bas-Relief של Mutina, בעיצוב Patricia Urquiola. אמנות התבליט העתיקה, בחמר פורצלן שעובד ביד.
+  - הקיר משתנה עם האור לאורך היום.
+  - כל אריח עבר שיחול בעבודת יד.
+  seller_cheat_sheet:
+    positioning: זה Bas-Relief של Mutina, בעיצוב Patricia Urquiola. אמנות התבליט העתיקה, בחמר פורצלן שעובד ביד.
+    private_customer: הקיר משתנה עם האור לאורך היום. כל אריח עבר שיחול בעבודת יד.
+    professional_customer: שם של מעצבת שהלקוח מכיר, וסיפור שקל להציג. ארבע דוגמאות באותה קולקציה, שאפשר לשלב באותו
+      חלל.
+    derived_from:
+    - brand:cross_sell
+    - claim:MB-1
+    - claim:MB-3
+    - claim:MB-5
+    - house:A
+    - house:B
+  when_to_recommend:
+  - פרויקט שבו קיר אחד צריך להיות האמירה
+  - לקוח שמחפש חומר עם נוכחות, לא הדפס
+  - מעצב/ת שמחפש/ת סיפור להציג ללקוח
+  - שילוב של כמה דוגמאות מהקולקציה באותו חלל
+  when_to_recommend_derived_from:
+  - house:B
+  - house:A
+  - spec:material
+  - brand:cross_sell
+landing:
+  hero:
+    headline: messaging.headline
+    sub: messaging.one_liner
+    image: product.assets.hero_image
+  sections:
+  - story
+  - benefits
+  - details
+  - mody
+  product_details:
+  - label: מותג / קולקציה
+    value: MUTINA · Bas-Relief · Patchwork
+    ref: null
+    source: product_page
+    claims: []
+  - label: עיצוב
+    value: Patricia Urquiola
+    ref: null
+    source: product_page
+    claims: []
+  - label: מק"ט
+    value: '[חסר: product.model_number – לבדיקה]'
+    ref: null
+    source: null
+    claims: []
+  - label: חומר
+    value: Porcelain clays, artisanally extruded
+    ref: null
+    source: product_page
+    claims: []
+  - label: פורמט
+    value: 18×54 ס"מ
+    ref: spec:format_cm
+    source: collection_page
+    claims:
+    - text: 18×54 ס"מ
+      ref: spec:format_cm
+  - label: עובי
+    value: 9 מ"מ
+    ref: spec:thickness_mm
+    source: collection_page
+    claims:
+    - text: 9 מ"מ
+      ref: spec:thickness_mm
+  - label: גוון
+    value: White (קיים גם ב-Powder וב-Black)
+    ref: spec:colour
+    source: collection_page
+    claims:
+    - text: White (קיים גם ב-Powder וב-Black)
+      ref: spec:colour
+  - label: יישום (קיר / רצפה)
+    value: '[חסר: technical.application – לבדיקה]'
+    ref: null
+    source: null
+    claims: []
+  - label: מחיר
+    value: '[חסר: commercial.price_ils – לבדיקה]'
+    ref: null
+    source: null
+    claims: []
+  mody_section:
+    value: MODY ו-Mutina מקיימות יחד תחרות אדריכלות בשבוע העיצוב במילאנו. ב-MODY מלווים אותך מאולם התצוגה ועד ההתקנה.
+    claims:
+    - text: תחרות אדריכלות בשבוע העיצוב במילאנו
+      ref: brand:local_presence
+    - text: מלווים אותך מאולם התצוגה ועד ההתקנה
+      ref: house:P5
+deck:
+  cover:
+    source_fields:
+    - product.facts.name
+    - product.facts.brand
+    - product.facts.collection
+    - messaging.one_liner
+    - product.assets.hero_image
+    notes: זה לא אריח. זה משטח אדריכלי.
+  slides:
+  - id: '01'
+    type: product_overview
+    source_fields:
+    - product.facts
+    - product.specs
+    - product.summary
+    notes: המפרט מגיע מעמוד הקולקציה. היישום (קיר או רצפה) עדיין פתוח.
+  - id: '02'
+    type: positioning
+    source_fields:
+    - strategy.positioning
+    - strategy.value_proposition
+    - strategy.customer_need
+    - strategy.consumer_insight
+    - strategy.differentiators
+    notes: המיצוב נגזר מהטענות המאושרות בלבד. אין לרמוז על יישום עד שיאומת.
+  - id: '03'
+    type: target_audience
+    source_fields:
+    - strategy.target_audiences
+    notes: price_tier=premium, ולכן B ראשון ו-A שני. שם המעצבת הוא כלי חזק מול אדריכלים.
+  - id: '04'
+    type: brand_messaging
+    source_fields:
+    - messaging.headline
+    - messaging.one_liner
+    - messaging.tone
+    - messaging.key_messages
+    notes: כותרת דף הנחיתה. מותר רק ללא VOC, בניסוח המדויק של היצרן.
+  - id: '05'
+    type: product_story
+    source_fields:
+    - story
+    - benefits
+    notes: כל עמוד נשען על טענה מאושרת מקובץ Mutina.
+  - id: '06'
+    type: seller_cheat_sheet
+    source_fields:
+    - sales.seller_cheat_sheet
+    - sales.key_talking_points
+    - sales.when_to_recommend
+    notes: שלוש השורות מתוך sales.md. לא להבטיח התאמה לרצפה או לאזור רטוב.
+  - id: '07'
+    type: launch_plan
+    source_fields:
+    - deck.launch_plan
+    - deck.next_step
+    notes: עד שיאומת application, אסור להציע את האריח לרצפה או לאזור רטוב.
+  launch_plan:
+  - stage: נכסים
+    action: 'landing.html (דף מוצר) · launch.pptx · landing.md · sales.md · מפרט מאומת מהקובץ · תמונת מוצר מאושרת:
+      [חסר: sources.image – לבדיקה]'
+    status: טיוטה בלבד עד לאישור תמונת מוצר
+    owner: null
+  - stage: הכשרה
+    action: sales.md ושקף כלים למכירה זמינים לצוות המכירות · מסרים מאושרים מחבילת ההשקה
+    status: null
+    owner: null
+  - stage: ערוצים
+    action: '[חסר: launch_plan.channels – לבדיקה]'
+    status: null
+    owner: null
+  - stage: מדידה
+    action: '[חסר: launch_plan.measure – לבדיקה]'
+    status: null
+    owner: null
+  next_step:
+    owner: מנהל/ת מוצר
+    status: 'טיוטה – לא לפרסום. חסר: sources.image, product.model_number, commercial.price_ils'
+    launch_date: '[חסר: launch_plan.launch_date – לבדיקה]'
+    open_decisions: '[חסר: technical.application – לבדיקה] · [חסר: sources.image – לבדיקה] · [חסר: product.model_number
+      – לבדיקה] · [חסר: commercial.price_ils – לבדיקה]'
+sources:
+  house: brand/mody_brand_dna.v1.0.yaml
+  manufacturer: brand/mutina.v1.0.yaml
+  product_sources:
+    collection_page: https://www.mutina.it/en/collection/bas-relief-by-patricia-urquiola
+    product_page: https://www.mutina.it/en/collection/bas-relief-by-patricia-urquiola
+    mody_selection: https://mody.co.il/hameatzvot/
+    technical_sheet: https://www.mutina.it/downloads/2302/66/BasRelief_catalogue.pdf
+    image: null
+qa:
+  status: not_ready
+  errors:
+  - code: MISSING_HERO_IMAGE
+    field: product.assets.hero_image
+    message: no product image in sources.image
+  warnings:
+  - code: LIMIT
+    field: story
+    message: 29 words (recommended ≥ 40)

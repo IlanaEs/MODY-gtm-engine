@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{page_title}}</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Heebo:wght@300;400;500;600&family=Montserrat:wght@900&family=Oswald:wght@300&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0a;--text:#f2efe9;--muted:#bdb8b0;--line:#2a2a2a;--red:#e3202a}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--text);font-family:'Heebo',sans-serif;font-weight:300;line-height:1.6}
+.ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+a{color:inherit;text-decoration:none}
+header{display:flex;justify-content:space-between;align-items:center;padding:22px 40px;border-bottom:1px solid var(--line)}
+.crumbs{font-size:13px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap}
+.crumbs span+span::before{content:"/";margin-left:10px;color:var(--line)}
+.logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:22px;letter-spacing:.14em;direction:ltr;display:inline-flex;align-items:center;gap:1px}
+.logo .o{width:18px;height:18px;border:5px solid var(--red);box-shadow:inset 0 0 0 2px #fff;display:inline-block;margin:0 2px}
+main{display:grid;grid-template-columns:minmax(0,1fr) 600px 72px;gap:0;min-height:calc(100vh - 68px)}
+.content{padding:36px 40px 60px;border-left:1px solid var(--line)}
+.gallery{position:sticky;top:0;height:100vh;padding:28px 24px;display:flex;flex-direction:column;gap:16px;border-left:1px solid var(--line)}
+.gallery .hero{position:relative;flex:1;min-height:0;overflow:hidden;background:#111}
+.gallery .hero img{width:100%;height:100%;object-fit:cover;display:block}
+.gallery .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to left,transparent 70%,var(--bg));pointer-events:none}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.thumbs button{background:#111;border:1px solid var(--line);aspect-ratio:1;overflow:hidden;cursor:pointer;padding:0}
+.thumbs button.active{border-color:var(--red)}
+.thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+.thumbs .empty{opacity:.35}
+.steps{display:flex;flex-direction:column;align-items:center;padding:36px 0;gap:22px;position:relative}
+.steps::before{content:"";position:absolute;top:36px;bottom:36px;width:1px;background:var(--red);opacity:.6}
+.steps a{font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--muted);background:var(--bg);padding:2px 0;position:relative}
+.steps a.active{color:var(--red)}
+.title-row{display:flex;justify-content:space-between;align-items:flex-start;gap:32px;padding-bottom:28px;border-bottom:1px solid var(--line)}
+.wordmark{font-family:'Oswald',sans-serif;font-weight:300;font-size:15px;letter-spacing:.32em;color:var(--muted);direction:ltr;display:inline-block}
+h1{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:60px;line-height:1;margin:6px 0 4px;direction:ltr;text-align:right}
+.model{font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--muted);direction:ltr;display:inline-block}
+.redline{width:34px;height:2px;background:var(--red);margin:14px 0 18px}
+.desc{max-width:520px;font-size:16px;color:var(--text)}
+.cta{flex:none;background:var(--red);color:#fff;font-weight:500;font-size:15px;padding:16px 28px;display:inline-block;border:0}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line)}
+.pillars div{padding:26px 22px;border-left:1px solid var(--line)}
+.pillars div:last-child{border-left:0}
+.pillars div:first-child{padding-right:0}
+h2{color:var(--red);font-size:17px;font-weight:500;margin-bottom:12px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid var(--line)}
+.grid2>section{padding:32px 0}
+.grid2>section:first-child{padding-left:32px;border-left:1px solid var(--line)}
+.grid2>section:last-child{padding-right:32px}
+table{width:100%;border-collapse:collapse;font-size:15px}
+td{padding:9px 0;border-bottom:1px solid var(--line);vertical-align:top}
+td:first-child{color:var(--muted);width:38%}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);margin-top:28px;border-top:1px solid var(--line)}
+.stats div{padding:18px 12px;border-left:1px solid var(--line)}
+.stats div:last-child{border-left:0}
+.stats .v{font-family:'Cormorant Garamond',serif;font-size:28px;line-height:1.1;display:block}
+.stats .l{font-size:12px;color:var(--muted)}
+.mlink{display:inline-block;margin-top:22px;font-size:14px;color:var(--muted);border-bottom:1px solid var(--red);padding-bottom:2px}
+.adv{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:34px}
+.adv .n{font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--red);line-height:1;display:block;margin-bottom:8px;direction:ltr}
+.adv h3{font-size:16px;font-weight:600;margin-bottom:6px}
+.adv p{font-size:14px;color:var(--muted)}
+.story p{font-size:15px;max-width:560px}
+.bottom{display:grid;grid-template-columns:1fr 1fr;gap:0;padding-top:32px}
+.box{border:1px solid var(--line);padding:26px 24px}
+.bottom .box:first-child{margin-left:-1px}
+.box ul{list-style:none}
+.box li{padding:7px 0;border-bottom:1px solid var(--line);font-size:15px}
+.box li:last-child{border-bottom:0}
+.cheat{display:grid;grid-template-columns:repeat(4,1fr)}
+.cheat>div{padding:0 14px;border-left:1px solid var(--line);font-size:14px}
+.cheat>div:last-child{border-left:0}
+.cheat>div:first-child{padding-right:0}
+.cheat h4{font-size:12px;color:var(--muted);font-weight:500;margin-bottom:8px;letter-spacing:.04em}
+.cheat li{border:0;padding:3px 0;font-size:14px}
+.cheat q{font-style:normal;quotes:"״" "״"}
+@media (max-width:1180px){.adv{grid-template-columns:1fr}.adv article{border-bottom:1px solid var(--line);padding-bottom:16px}.adv article:last-child{border-bottom:0}}
+@media (max-width:900px){main{grid-template-columns:1fr}.gallery{position:static;height:auto;order:-1;border-left:0;border-bottom:1px solid var(--line)}.gallery .hero{aspect-ratio:4/5}.steps{display:none}.content{border-left:0;padding:28px 20px}.grid2,.bottom,.pillars,.cheat{grid-template-columns:1fr}.grid2>section:first-child,.pillars div,.cheat>div{border-left:0;padding-left:0;padding-right:0}.title-row{flex-direction:column}h1{font-size:44px}}
+</style>
+</head>
+<body>
+<header>
+  <nav class="crumbs">{{breadcrumb}}</nav>
+  <div class="logo">M<span class="o"></span>DY</div>
+</header>
+<main>
+  <div class="content">
+    <section id="s01" class="title-row">
+      <a class="cta" href="{{cta_link}}">{{cta_text}}</a>
+      <div>
+        <span class="wordmark">{{brand}}</span>
+        <h1>{{product_name}}</h1>
+        <span class="model">{{model}}</span>
+        <div class="redline"></div>
+        <p class="desc">{{short_description}}</p>
+      </div>
+    </section>
+    <section id="s02" class="pillars">
+      <div><h2>ערך ליבה</h2><p>{{core_value}}</p></div>
+      <div><h2>מיצוב</h2><p>{{positioning}}</p></div>
+      <div><h2>קהל יעד</h2><p>{{target_audience}}</p></div>
+    </section>
+    <div class="grid2">
+      <section id="s03">
+        <h2>פרטי המוצר</h2>
+        <table>{{details_rows}}</table>
+        <div class="stats" id="s04">{{tech_stats}}</div>
+        {{manufacturer_link}}
+      </section>
+      <section id="s05">
+        <h2>היתרונות המרכזיים</h2>
+        <div class="adv">{{advantages}}</div>
+        <div class="story"><h2>סיפור המוצר</h2><p>{{product_story}}</p></div>
+      </section>
+    </div>
+    <div class="bottom">
+      <section id="s06" class="box">
+        <h2>מתי להמליץ על המוצר</h2>
+        <ul>{{recommend_items}}</ul>
+      </section>
+      <section id="s07" class="box">
+        <h2>דף עזר למכירה</h2>
+        <div class="cheat">
+          <div><h4>לזכור</h4><ul>{{remember_items}}</ul></div>
+          <div><h4>ללקוחות פרטיים</h4><p>{{private_clients}}</p></div>
+          <div><h4>לאדריכלים ומעצבים</h4><p>{{architects}}</p></div>
+          <div><h4>משפט פתיחה</h4><p><q>{{opening_line}}</q></p></div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <aside class="gallery">
+    <div class="hero"><img id="hero" src="{{hero_src}}" alt="{{hero_alt}}"></div>
+    <div class="thumbs">{{thumbs}}</div>
+  </aside>
+  <nav class="steps">{{steps}}</nav>
+</main>
+<script>
+document.querySelectorAll('.thumbs button[data-src]').forEach(function(b){b.addEventListener('click',function(){document.getElementById('hero').src=b.dataset.src;document.querySelectorAll('.thumbs button').forEach(function(x){x.classList.remove('active')});b.classList.add('active')})});
+var steps=document.querySelectorAll('.steps a'),secs=[].map.call(steps,function(a){return document.querySelector(a.getAttribute('href'))});
+function mark(){var y=window.scrollY+140,i=0;secs.forEach(function(s,k){if(s&&s.offsetTop<=y)i=k});steps.forEach(function(a,k){a.classList.toggle('active',k===i)})}
+window.addEventListener('scroll',mark);mark();
+</script>
+</body>
+</html>

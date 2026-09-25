@@ -1,0 +1,474 @@
+meta:
+  product: gessi-g60077
+  generated: '2026-09-25'
+  skill_version: 1.1.0
+  brand_versions:
+    house: brand/mody_brand_dna.v1.0.yaml
+    manufacturer: brand/gessi.v1.1.yaml
+  validator_status: READY_WITH_FLAGS
+  publishable: false
+  publish_blockers:
+  - sources.image
+  - commercial.price_ils
+  flags:
+  - '[חסר: technical.dimensions_mm – לבדיקה]'
+  - '[חסר: technical.flow_rate_lpm – לבדיקה]'
+  - '[חסר: technical.installation_type – לבדיקה]'
+  - '[חסר: sources.image – לבדיקה]'
+  - '[חסר: commercial.price_ils – לבדיקה]'
+  - '[חסר: sources.technical_sheet – לבדיקה]'
+  draft_banner: 'טיוטה – לא לפרסום. חסר: sources.image, commercial.price_ils'
+product:
+  facts:
+    name:
+      value: ברז מטבח נשלף קשת
+      source: product_page
+    collection:
+      value: null
+      source: null
+    line:
+      value: null
+      source: null
+    model:
+      value: G60077
+      source: product_page
+    designer:
+      value: null
+      source: null
+    brand:
+      value: GESSI
+      source: product_page
+    brand_id:
+      value: gessi
+      source: product_page
+    category:
+      value: kitchen_mixer
+      source: product_page
+    category_label:
+      value: ברז מטבח
+      source: product_page
+    price:
+      value: null
+      display: null
+      source: null
+    price_tier:
+      value: core
+      source: mody_internal
+    availability:
+      value: null
+      source: null
+    launch_status:
+      value: null
+      source: null
+  specs:
+  - field: finish
+    label: גימור
+    value: Chrome · White/Chrome (G60077W) · Black/Chrome (G60077B)
+    source: mody_project_spec
+    ref: spec:finish
+    flag: null
+  - field: features
+    label: מאפיינים
+    value: Pull-out spray · Arc spout
+    source: mody_project_spec
+    ref: spec:features
+    flag: null
+  - field: dimensions_mm
+    label: מידות (מ"מ)
+    value: null
+    source: null
+    ref: null
+    flag: '[חסר: technical.dimensions_mm – לבדיקה]'
+  - field: flow_rate_lpm
+    label: ספיקה (ל/דק)
+    value: null
+    source: null
+    ref: null
+    flag: '[חסר: technical.flow_rate_lpm – לבדיקה]'
+  - field: installation_type
+    label: סוג התקנה
+    value: null
+    source: null
+    ref: null
+    flag: '[חסר: technical.installation_type – לבדיקה]'
+  assets:
+    hero_image:
+      path: null
+      source: null
+      exists: false
+      approved: false
+      format: null
+  summary:
+    value: ברז מטבח של Gessi עם מזלף נשלף ופיית קשת, בגימור כרום, לבן/כרום או שחור/כרום.
+    derived_from:
+    - spec:features
+    - spec:finish
+    - brand:identity
+strategy:
+  positioning:
+    value: 'ברז מטבח איטלקי לשימוש יומיומי: מזלף נשלף, פיית קשת, ושלושה גימורים לבחירה.'
+    derived_from:
+    - spec:features
+    - spec:finish
+    - brand:identity
+  value_proposition:
+    value: עיצוב איטלקי שמשדרג את המטבח מעל הסטנדרט, ועובד כל יום.
+    derived_from:
+    - house:C
+    - house:P4
+    - house:P2
+  customer_need:
+    value: שדרוג מורגש מעל הברז הסטנדרטי של הדירה, שנוח לעבוד איתו.
+    derived_from:
+    - house:C
+    - house:P4
+  consumer_insight:
+    value: רוכשי דירה חדשה מחפשים שדרוג אחד פשוט שמורגש כל יום במטבח.
+    derived_from:
+    - house:C
+    - house:P4
+  differentiators:
+  - value: מזלף נשלף ופיית קשת, בשלושה גימורים, ממותג איטלקי שמגיע דרך MODY.
+    derived_from:
+    - spec:features
+    - spec:finish
+    - brand:relationship
+  audience_rule: price_tier=core → C, B
+  target_audiences:
+  - id: C
+    segment: רוכשי דירות חדשות (שדרוג מול סטנדרט)
+    decision_driver: ערך מוסף מעל הסטנדרט
+    needs_line: צריכים הסבר פשוט למה לשדרג
+    need: סיבה פשוטה לשדרג מעל הברז הסטנדרטי של הדירה.
+    relevance: מותג איטלקי שמגיע דרך MODY, יבואנית בלעדית.
+    derived_from:
+    - house:C
+  - id: B
+    segment: לקוחות פרטיים בבנייה או שיפוץ ברמה גבוהה
+    decision_driver: פריט שמגדיר את החלל · איכות לאורך זמן
+    needs_line: צריכים ביטחון ברכישה וליווי
+    need: ברז שנוח לעבוד איתו כל יום ומתאים לעיצוב המטבח.
+    relevance: גימור לבחירה לפי ידיות הארונות.
+    derived_from:
+    - house:B
+    - spec:features
+  pillars:
+  - id: P2
+    name: השראה בינלאומית
+    support: Gessi, יצרנית איטלקית
+    refs: []
+  - id: P4
+    name: דקורטיבי + פרקטי
+    support: מזלף נשלף ופיית קשת
+    refs: []
+  - id: P5
+    name: שירות מקצועי
+    support: ליווי עד ההתקנה
+    refs: []
+  spec_to_benefit:
+  - from: 'technical.features: Pull-out spray'
+    display: Pull-out spray
+    benefit: מגיע לכל פינה בכיור
+    ref: spec:features
+  - from: 'technical.features: Arc spout'
+    display: Arc spout
+    benefit: אזור עבודה פתוח מעל הכיור
+    ref: spec:features
+  - from: technical.finish + variants
+    display: Chrome / White / Black
+    benefit: מתאים לסגנון המטבח
+    ref: spec:finish
+  notes:
+    collection_story: none
+    vocabulary_used: gessi.voice_extension only (Haute Culture vocabulary excluded, line mismatch)
+messaging:
+  headline:
+    value: עיצוב איטלקי למטבח של כל יום
+    derived_from: &id001
+    - brand:identity
+    - brand:relationship
+    - house:P5
+    - spec:features
+    - spec:finish
+  one_liner:
+    value: עיצוב איטלקי למטבח של כל יום.
+    derived_from: *id001
+  tone:
+  - אלגנטי
+  - בטוח
+  - שקט
+  - מדויק
+  key_messages:
+  - value: מזלף נשלף שמגיע לכל פינה בכיור.
+    derived_from: &id002
+    - spec:features
+    - spec:finish
+  - value: פיית קשת שפותחת את אזור העבודה.
+    derived_from: *id002
+  - value: שלושה גימורים, כדי להתאים למטבח.
+    derived_from: *id002
+story:
+  value: null
+  claims: []
+  derived_from: []
+  expected: false
+benefits:
+- title: נוח בעבודה.
+  text: מזלף נשלף מגיע לכל פינה בכיור.
+  fact: Pull-out spray
+  ref: spec:features
+  claims:
+  - text: מזלף נשלף מגיע לכל פינה בכיור
+    ref: spec:features
+  derived_from:
+  - spec:features
+- title: קו נקי מעל הכיור.
+  text: פיית קשת מעוגלת שפותחת את אזור העבודה.
+  fact: Arc spout
+  ref: spec:features
+  claims: []
+  derived_from:
+  - spec:features
+- title: גימור שמתאים למטבח שלך.
+  text: כרום, לבן/כרום או שחור/כרום.
+  fact: Chrome · White/Chrome (G60077W) · Black/Chrome (G60077B)
+  ref: spec:finish
+  claims:
+  - text: כרום, לבן/כרום או שחור/כרום
+    ref: spec:finish
+  derived_from:
+  - spec:finish
+sales:
+  opening:
+    value: זה ברז מטבח של Gessi, עם מזלף נשלף ופיית קשת. עיצוב איטלקי למטבח שעובדים בו כל יום.
+    ref: null
+    claims: []
+  architect_points:
+  - text: 'שלושה גימורים באותו דגם: כרום, לבן/כרום ושחור/כרום.'
+    ref: null
+    claims: []
+  - text: 'פיית קשת: קו מעוגל מעל הכיור.'
+    ref: null
+    claims: []
+  - text: מותג איטלקי שמגיע דרך MODY, יבואנית בלעדית.
+    ref: null
+    claims: []
+  private_points:
+  - text: המזלף נשלף ומגיע לכל פינה בכיור.
+    ref: null
+    claims: []
+  - text: פיית הקשת פותחת את אזור העבודה מעל הכיור.
+    ref: null
+    claims: []
+  - text: אפשר לבחור גימור שמתאים לידיות של הארונות.
+    ref: null
+    claims: []
+  faq:
+  - q: מה המחיר?
+    a: 'נבדוק ונחזור אלייך. [חסר: commercial.price_ils – לבדיקה]'
+    flag: '[חסר: commercial.price_ils – לבדיקה]'
+  - q: מה המידות?
+    a: 'נבדוק ונחזור אלייך. [חסר: technical.dimensions_mm – לבדיקה]'
+    flag: '[חסר: technical.dimensions_mm – לבדיקה]'
+  - q: האם הוא חוסך במים?
+    a: 'נבדוק ונחזור אלייך. [חסר: technical.flow_rate_lpm – לבדיקה]'
+    flag: '[חסר: technical.flow_rate_lpm – לבדיקה]'
+  - q: איך הוא מותקן?
+    a: 'נבדוק ונחזור אלייך. [חסר: technical.installation_type – לבדיקה]'
+    flag: '[חסר: technical.installation_type – לבדיקה]'
+  - q: יש תמונה לשלוח ללקוח?
+    a: 'נבדוק ונחזור אלייך. [חסר: sources.image – לבדיקה]'
+    flag: '[חסר: sources.image – לבדיקה]'
+  - q: יש דף טכני לשלוח?
+    a: 'נבדוק ונחזור אלייך. [חסר: sources.technical_sheet – לבדיקה]'
+    flag: '[חסר: sources.technical_sheet – לבדיקה]'
+  dont_say:
+  - '"חוסך מים" (אין נתון ספיקה)'
+  - '"כל סיר נכנס מתחת" או גובה פיה כלשהו (אין מידות)'
+  - שם של סדרת Gessi (המקור לא מציין)
+  - '"מלאכת יד" או "Haute Culture" (שייכים לקו אחר של Gessi)'
+  key_talking_points:
+  - זה ברז מטבח של Gessi, עם מזלף נשלף ופיית קשת. עיצוב איטלקי למטבח שעובדים בו כל יום.
+  - המזלף נשלף ומגיע לכל פינה בכיור.
+  - אפשר לבחור גימור שמתאים לידיות של הארונות.
+  seller_cheat_sheet:
+    positioning: זה ברז מטבח של Gessi, עם מזלף נשלף ופיית קשת. עיצוב איטלקי למטבח שעובדים בו כל יום.
+    private_customer: המזלף נשלף ומגיע לכל פינה בכיור. פיית הקשת פותחת את אזור העבודה מעל הכיור.
+    professional_customer: 'שלושה גימורים באותו דגם: כרום, לבן/כרום ושחור/כרום. פיית קשת: קו מעוגל מעל הכיור.'
+    derived_from:
+    - brand:identity
+    - spec:features
+    - spec:finish
+  when_to_recommend:
+  - 'דירה חדשה: שדרוג מעל ברז הסטנדרט'
+  - מטבח שמבשלים בו כל יום
+  - מטבח עם ידיות בלבן או בשחור
+  - לקוח שרוצה מותג איטלקי, לא ברז אנונימי
+  when_to_recommend_derived_from:
+  - house:C
+  - house:B
+  - spec:finish
+  - brand:identity
+landing:
+  hero:
+    headline: messaging.headline
+    sub: messaging.one_liner
+    image: product.assets.hero_image
+  sections:
+  - story
+  - benefits
+  - details
+  - mody
+  product_details:
+  - label: מותג
+    value: GESSI
+    ref: null
+    source: product_page
+    claims: []
+  - label: מק"ט
+    value: G60077 · G60077W · G60077B
+    ref: null
+    source: product_page
+    claims: []
+  - label: סוג
+    value: ברז מטבח, מזלף נשלף, פיית קשת
+    ref: null
+    source: product_page
+    claims: []
+  - label: גימור
+    value: Chrome · White/Chrome · Black/Chrome
+    ref: null
+    source: product_page
+    claims: []
+  - label: מידות
+    value: '[חסר: technical.dimensions_mm – לבדיקה]'
+    ref: null
+    source: null
+    claims: []
+  - label: ספיקה
+    value: '[חסר: technical.flow_rate_lpm – לבדיקה]'
+    ref: null
+    source: null
+    claims: []
+  - label: סוג התקנה
+    value: '[חסר: technical.installation_type – לבדיקה]'
+    ref: null
+    source: null
+    claims: []
+  - label: דף טכני
+    value: '[חסר: sources.technical_sheet – לבדיקה]'
+    ref: null
+    source: null
+    claims: []
+  - label: מחיר
+    value: '[חסר: commercial.price_ils – לבדיקה]'
+    ref: null
+    source: null
+    claims: []
+  mody_section:
+    value: Gessi היא יצרנית איטלקית של ברזים. MODY מייבאת אותה בלעדית לישראל, ומלווה אותך מאולם התצוגה ועד ההתקנה.
+    claims:
+    - text: Gessi היא יצרנית איטלקית של ברזים
+      ref: brand:identity
+    - text: MODY מייבאת אותה בלעדית לישראל
+      ref: brand:relationship
+    - text: מלווה אותך מאולם התצוגה ועד ההתקנה
+      ref: house:P5
+deck:
+  cover:
+    source_fields:
+    - product.facts.name
+    - product.facts.brand
+    - product.facts.collection
+    - messaging.one_liner
+    - product.assets.hero_image
+    notes: מוצר פונקציונלי. הסיפור הוא הנוחות, לא החומר.
+  slides:
+  - id: '01'
+    type: product_overview
+    source_fields:
+    - product.facts
+    - product.specs
+    - product.summary
+    notes: 'שני מפרטים מאומתים בלבד: גימור ומאפיינים. מחיר ומידות פתוחים.'
+  - id: '02'
+    type: positioning
+    source_fields:
+    - strategy.positioning
+    - strategy.value_proposition
+    - strategy.customer_need
+    - strategy.consumer_insight
+    - strategy.differentiators
+    notes: המיצוב נשען על המפרט ועל זהות היצרן, לא על סיפור סדרה.
+  - id: '03'
+    type: target_audience
+    source_fields:
+    - strategy.target_audiences
+    notes: price_tier=core, ולכן קהל C ראשון.
+  - id: '04'
+    type: brand_messaging
+    source_fields:
+    - messaging.headline
+    - messaging.one_liner
+    - messaging.tone
+    - messaging.key_messages
+    notes: בכוונה אין כאן טקסט השראה. אין מקור, ולכן אין סיפור.
+  - id: '05'
+    type: product_story
+    source_fields:
+    - story
+    - benefits
+    notes: אין בלוק קולקציה, ולכן אין סיפור. התועלות מגיעות מהמפרט בלבד.
+  - id: '06'
+    type: seller_cheat_sheet
+    source_fields:
+    - sales.seller_cheat_sheet
+    - sales.key_talking_points
+    - sales.when_to_recommend
+    notes: שלוש השורות מתוך sales.md. בלי הבטחות על ספיקה או על מידות.
+  - id: '07'
+    type: launch_plan
+    source_fields:
+    - deck.launch_plan
+    - deck.next_step
+    notes: 'שני דגלים חוסמים פרסום: תמונה ומחיר. השאר פתוחים לבדיקה מול היצרן.'
+  launch_plan:
+  - stage: נכסים
+    action: 'landing.html (דף מוצר) · launch.pptx · landing.md · sales.md · מפרט מאומת מהקובץ · תמונת מוצר מאושרת:
+      [חסר: sources.image – לבדיקה]'
+    status: טיוטה בלבד עד לאישור תמונת מוצר
+    owner: null
+  - stage: הכשרה
+    action: sales.md ושקף כלים למכירה זמינים לצוות המכירות · מסרים מאושרים מחבילת ההשקה
+    status: null
+    owner: null
+  - stage: ערוצים
+    action: '[חסר: launch_plan.channels – לבדיקה]'
+    status: null
+    owner: null
+  - stage: מדידה
+    action: '[חסר: launch_plan.measure – לבדיקה]'
+    status: null
+    owner: null
+  next_step:
+    owner: מנהל/ת מוצר
+    status: 'טיוטה – לא לפרסום. חסר: sources.image, commercial.price_ils'
+    launch_date: '[חסר: launch_plan.launch_date – לבדיקה]'
+    open_decisions: '[חסר: technical.dimensions_mm – לבדיקה] · [חסר: technical.flow_rate_lpm – לבדיקה] · [חסר: technical.installation_type
+      – לבדיקה] · [חסר: sources.image – לבדיקה] · [חסר: commercial.price_ils – לבדיקה] · [חסר: sources.technical_sheet
+      – לבדיקה]'
+sources:
+  house: brand/mody_brand_dna.v1.0.yaml
+  manufacturer: brand/gessi.v1.1.yaml
+  product_sources:
+    mody_project_spec: https://asden.co.il/wp-content/uploads/2024/02/MODI-VIDA-FINISHES.pdf
+    product_page: https://asden.co.il/wp-content/uploads/2024/02/MODI-VIDA-FINISHES.pdf
+    technical_sheet: null
+    image: null
+qa:
+  status: not_ready
+  errors:
+  - code: MISSING_HERO_IMAGE
+    field: product.assets.hero_image
+    message: no product image in sources.image
+  warnings: []

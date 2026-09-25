@@ -1,0 +1,535 @@
+meta:
+  product: gessi-77201
+  generated: '2026-09-25'
+  skill_version: 1.1.0
+  brand_versions:
+    house: brand/mody_brand_dna.v1.0.yaml
+    manufacturer: brand/gessi.v1.1.yaml
+  validator_status: READY_WITH_FLAGS
+  publishable: true
+  publish_blockers: []
+  flags:
+  - '[חסר: technical.dimensions_mm – לבדיקה]'
+  - '[חסר: technical.flow_rate_lpm – לבדיקה]'
+  - '[חסר: technical.installation_type – לבדיקה]'
+  - '[חסר: sources.technical_sheet – לבדיקה]'
+  draft_banner: null
+product:
+  facts:
+    name:
+      value: Jacqueline 77201
+      source: product_page
+    collection:
+      value: Jacqueline
+      source: product_page
+    line:
+      value: Haute Culture
+      source: product_page
+    model:
+      value: '77201'
+      source: product_page
+    designer:
+      value: null
+      source: null
+    brand:
+      value: GESSI
+      source: product_page
+    brand_id:
+      value: gessi
+      source: product_page
+    category:
+      value: basin_mixer
+      source: product_page
+    category_label:
+      value: ברז לכיור
+      source: product_page
+    price:
+      value: 5000
+      display: 5,000 ₪
+      source: mody_listing
+    price_tier:
+      value: signature
+      source: mody_internal
+    availability:
+      value: null
+      source: null
+    launch_status:
+      value: null
+      source: null
+  specs:
+  - field: signature_material
+    label: חומר חתימה
+    value: Real bamboo root, handcrafted
+    source: collection_page
+    ref: spec:signature_material
+    flag: null
+  - field: finish
+    label: גימור
+    value: 726 – Warm Bronze Br. PVD
+    source: product_page
+    ref: spec:finish
+    flag: null
+  - field: features
+    label: מאפיינים
+    value: Low spout · Swivel spout · Horn-effect lever · Connecting flexibles included · Without waste
+    source: product_page
+    ref: spec:features
+    flag: null
+  - field: dimensions_mm
+    label: מידות (מ"מ)
+    value: null
+    source: null
+    ref: null
+    flag: '[חסר: technical.dimensions_mm – לבדיקה]'
+  - field: flow_rate_lpm
+    label: ספיקה (ל/דק)
+    value: null
+    source: null
+    ref: null
+    flag: '[חסר: technical.flow_rate_lpm – לבדיקה]'
+  - field: installation_type
+    label: סוג התקנה
+    value: null
+    source: null
+    ref: null
+    flag: '[חסר: technical.installation_type – לבדיקה]'
+  - field: material
+    label: חומר
+    value: Bamboo root + metal
+    source: collection_page
+    ref: spec:material
+    flag: null
+  assets:
+    hero_image:
+      path: assets/77201_warm-bronze.png
+      source: sources.image
+      exists: false
+      approved: false
+      format: png
+  summary:
+    value: 'ברז לכיור מקו Haute Culture של Gessi: גוף משורש במבוק אמיתי בעיבוד ידני, בגימור Warm Bronze Br. PVD.'
+    derived_from:
+    - claim:JQ-3
+    - spec:finish
+    - spec:signature_material
+strategy:
+  positioning:
+    value: פריט חתימה לחדר רחצה מעוצב, לא עוד ברז. שורש במבוק אמיתי בעבודת יד, שאין שני זהים לו.
+    derived_from:
+    - claim:JQ-3
+    - spec:signature_material
+    - house:P1
+  value_proposition:
+    value: חומר טבעי בעיבוד ידני, שהופך את הכיור לנקודת המוקד של החלל.
+    derived_from:
+    - spec:signature_material
+    - claim:JQ-2
+    - house:P1
+  customer_need:
+    value: פריט שמגדיר את חדר הרחצה ומספר סיפור, עם איכות שנשמרת לאורך זמן.
+    derived_from:
+    - house:B
+    - house:P3
+  consumer_insight:
+    value: בפרויקט ברמה גבוהה מחפשים פריט אחד שאי אפשר למצוא בכל מקום.
+    derived_from:
+    - house:A
+    - house:B
+    - claim:JQ-3
+  differentiators:
+  - value: הקולקציה הראשונה של Gessi משורשי במבוק אמיתי. הגוון והפרקים משתנים מפריט לפריט.
+    derived_from:
+    - claim:JQ-1
+    - claim:JQ-3
+  audience_rule: price_tier=signature → A, B
+  target_audiences:
+  - id: A
+    segment: אדריכלים ומעצבי פנים
+    decision_driver: ייחודיות · סיפור להציג ללקוח · גימורים וזמינות
+    needs_line: צריכים נתונים מדויקים ונקודות מכירה ללקוח הסופי
+    need: סיפור חומר שאפשר להציג ללקוח, ונתונים מדויקים לתכנון.
+    relevance: קו Haute Culture נותן למעצב פריט שמייחד את הפרויקט.
+    derived_from:
+    - house:A
+  - id: B
+    segment: לקוחות פרטיים בבנייה או שיפוץ ברמה גבוהה
+    decision_driver: פריט שמגדיר את החלל · איכות לאורך זמן
+    needs_line: צריכים השראה, ביטחון ברכישה וליווי
+    need: פריט אחד שמגדיר את חדר הרחצה ומחזיק מעמד לאורך שנים.
+    relevance: עבודת יד איטלקית, עם ליווי של MODY מהבחירה ועד ההתקנה.
+    derived_from:
+    - house:B
+    - house:P3
+  pillars:
+  - id: P1
+    name: עיצוב מוקפד
+    support: חומר טבעי, כל פריט שונה (JQ-3)
+    refs:
+    - claim:JQ-3
+  - id: P3
+    name: איכות וגימור
+    support: בחירה ידנית ועיבוד ידני (JQ-2, JQ-5)
+    refs:
+    - claim:JQ-2
+    - claim:JQ-5
+  - id: P4
+    name: דקורטיבי + פרקטי
+    support: פיה מסתובבת בגימור Warm Bronze Br. PVD
+    refs: []
+  spec_to_benefit:
+  - from: design.signature_material
+    display: Real bamboo root, handcrafted
+    benefit: פריט שלא חוזר על עצמו
+    ref: spec:signature_material
+  - from: JQ-4
+    display: Horn-effect lever (JQ-4)
+    benefit: מגע של אביזר אופנה
+    ref: claim:JQ-4
+  - from: 'technical.features: Swivel spout'
+    display: Swivel spout
+    benefit: גמישות בשימוש היומיומי
+    ref: spec:features
+  - from: technical.finish
+    display: 726 – Warm Bronze Br. PVD
+    benefit: גוון חם שמשלים את הבמבוק
+    ref: spec:finish
+  notes: {}
+messaging:
+  headline:
+    value: שורש במבוק, יד אומן, אין שניים זהים
+    derived_from: &id001
+    - brand:local_presence
+    - claim:JQ-1
+    - claim:JQ-2
+    - claim:JQ-3
+    - claim:JQ-4
+    - claim:JQ-5
+    - commercial:price_ils
+    - house:P5
+    - spec:features
+    - spec:finish
+    - spec:material
+  one_liner:
+    value: haute couture לכיור. שורש במבוק, יד אומן, אין שניים זהים.
+    derived_from: *id001
+  tone:
+  - אלגנטי
+  - בטוח
+  - שקט
+  - מדויק
+  key_messages:
+  - value: שורש במבוק אמיתי, נבחר ומעובד ביד.
+    derived_from: &id002
+    - claim:JQ-2
+    - claim:JQ-3
+    - claim:JQ-4
+  - value: אין שני ברזים זהים. זה העיצוב, לא פגם.
+    derived_from: *id002
+  - value: 'Haute couture לכיור: הידית בהשראת אביזרי אופנה.'
+    derived_from: *id002
+story:
+  value: Jacqueline היא הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי. כל שורש נבחר ביד לפי הקוטר ולפי המרווח
+    בין הפרקים, מעובד באדים ומשולב במתכת. כמו בגד שנתפר לפי מידה, התהליך ידני, ולכן כל פריט הוא יחיד.
+  claims:
+  - text: הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי
+    ref: claim:JQ-1
+  - text: כל שורש נבחר ביד לפי הקוטר ולפי המרווח בין הפרקים
+    ref: claim:JQ-2
+  - text: מעובד באדים ומשולב במתכת
+    ref: claim:JQ-3
+  - text: כמו בגד שנתפר לפי מידה, התהליך ידני
+    ref: claim:JQ-5
+  derived_from:
+  - claim:JQ-1
+  - claim:JQ-2
+  - claim:JQ-3
+  - claim:JQ-5
+  expected: true
+benefits:
+- title: פריט שאין לאף אחד אחר.
+  text: הגוון והפרקים של הבמבוק משתנים מפריט לפריט, ולכן הברז שלך לא חוזר על עצמו.
+  fact: Real bamboo root, handcrafted
+  ref: spec:signature_material
+  claims: []
+  derived_from:
+  - spec:signature_material
+- title: מגע של אביזר אופנה.
+  text: הידית, בגימור דמוי קרן, בהשראת סוגרי תיקים ואביזרי אופנה.
+  fact: הידיות בהשראת סוגרי תיקים ואביזרי אופנה
+  ref: claim:JQ-4
+  claims:
+  - text: בהשראת סוגרי תיקים ואביזרי אופנה
+    ref: claim:JQ-4
+  - text: בגימור דמוי קרן
+    ref: spec:features
+  derived_from:
+  - claim:JQ-4
+  - spec:features
+- title: יופי שעובד כל יום.
+  text: פיה מסתובבת ופיה נמוכה, בגימור Warm Bronze Br. PVD.
+  fact: Swivel spout
+  ref: spec:features
+  claims:
+  - text: פיה מסתובבת ופיה נמוכה
+    ref: spec:features
+  - text: Warm Bronze Br. PVD
+    ref: spec:finish
+  derived_from:
+  - spec:features
+  - spec:finish
+sales:
+  opening:
+    value: זה Jacqueline של Gessi. הגוף עשוי משורש במבוק אמיתי שנבחר ועובד ביד, ולכן אין שני ברזים זהים.
+    ref: null
+    claims: []
+  architect_points:
+  - text: 'סיפור שקל להציג ללקוח: הקולקציה הראשונה של Gessi מבמבוק אמיתי.'
+    ref: null
+    claims: []
+  - text: כל פריט יחיד. זה חלק מהעיצוב, לא פגם.
+    ref: null
+    claims: []
+  - text: אפשר להמשיך את אותה שפה לכל חדר הרחצה עם Total Look של הסדרה.
+    ref: brand:cross_sell
+    claims:
+    - text: Total Look של הסדרה
+      ref: brand:cross_sell
+  private_points:
+  - text: זה הפריט שמגדיר את חדר הרחצה.
+    ref: null
+    claims: []
+  - text: הידית בהשראת סוגרי תיקים ואביזרי אופנה.
+    ref: null
+    claims: []
+  - text: פיה מסתובבת. יפה, ועובד כל יום.
+    ref: null
+    claims: []
+  faq:
+  - q: מה המידות?
+    a: 'נבדוק ונחזור אלייך. [חסר: technical.dimensions_mm – לבדיקה]'
+    flag: '[חסר: technical.dimensions_mm – לבדיקה]'
+  - q: מה הספיקה?
+    a: 'נבדוק ונחזור אלייך. [חסר: technical.flow_rate_lpm – לבדיקה]'
+    flag: '[חסר: technical.flow_rate_lpm – לבדיקה]'
+  - q: איך הוא מותקן?
+    a: 'נבדוק ונחזור אלייך. [חסר: technical.installation_type – לבדיקה]'
+    flag: '[חסר: technical.installation_type – לבדיקה]'
+  - q: יש דף טכני לשלוח?
+    a: 'נבדוק ונחזור אלייך. [חסר: sources.technical_sheet – לבדיקה]'
+    flag: '[חסר: sources.technical_sheet – לבדיקה]'
+  - q: איך מתחזקים את הבמבוק?
+    a: נבדוק מול היצרן ונחזור אלייך.
+    flag: null
+  - q: מה המחיר?
+    a: 5,000 ₪.
+    flag: null
+  dont_say:
+  - '"הבמבוק עמיד למים" או כל הבטחה על תחזוקה (אין נתון מהיצרן)'
+  - השוואה למותגים אחרים
+  - '"הכי יוקרתי בישראל"'
+  key_talking_points:
+  - זה Jacqueline של Gessi. הגוף עשוי משורש במבוק אמיתי שנבחר ועובד ביד, ולכן אין שני ברזים זהים.
+  - כל פריט יחיד. זה חלק מהעיצוב, לא פגם.
+  - הידית בהשראת סוגרי תיקים ואביזרי אופנה.
+  seller_cheat_sheet:
+    positioning: זה Jacqueline של Gessi. הגוף עשוי משורש במבוק אמיתי שנבחר ועובד ביד, ולכן אין שני ברזים זהים.
+    private_customer: זה הפריט שמגדיר את חדר הרחצה. הידית בהשראת סוגרי תיקים ואביזרי אופנה.
+    professional_customer: סיפור חומר שקל להציג ללקוח, וגוון חם שמשלים את הבמבוק. אפשר להמשיך את אותה שפה לכל חדר
+      הרחצה עם Total Look.
+    derived_from:
+    - brand:cross_sell
+    - claim:JQ-2
+    - claim:JQ-3
+    - claim:JQ-4
+    - house:A
+    - house:B
+    - spec:finish
+  when_to_recommend:
+  - חדר רחצה ראשי בפרויקט ברמה גבוהה
+  - לקוח שמחפש פריט חתימה, לא פתרון סטנדרטי
+  - מעצב/ת שמחפש/ת סיפור חומר לפרויקט
+  - חלל בגוונים חמים, שהברונזה משלימה
+  when_to_recommend_derived_from:
+  - house:A
+  - house:B
+  - claim:JQ-5
+  - spec:finish
+landing:
+  hero:
+    headline: messaging.headline
+    sub: messaging.one_liner
+    image: product.assets.hero_image
+  sections:
+  - story
+  - benefits
+  - details
+  - mody
+  product_details:
+  - label: מותג / סדרה
+    value: GESSI · Jacqueline · Haute Culture
+    ref: null
+    source: product_page
+    claims: []
+  - label: מק"ט
+    value: '77201'
+    ref: null
+    source: product_page
+    claims: []
+  - label: סוג
+    value: ברז לכיור, פיה נמוכה
+    ref: null
+    source: product_page
+    claims: []
+  - label: חומר
+    value: Bamboo root + metal
+    ref: spec:material
+    source: collection_page
+    claims:
+    - text: Bamboo root + metal
+      ref: spec:material
+  - label: גימור
+    value: 726 – Warm Bronze Br. PVD
+    ref: null
+    source: product_page
+    claims: []
+  - label: מאפיינים
+    value: Low spout · Swivel spout · Horn-effect lever · Connecting flexibles included · Without waste
+    ref: null
+    source: product_page
+    claims: []
+  - label: מידות
+    value: '[חסר: technical.dimensions_mm – לבדיקה]'
+    ref: null
+    source: null
+    claims: []
+  - label: ספיקה
+    value: '[חסר: technical.flow_rate_lpm – לבדיקה]'
+    ref: null
+    source: null
+    claims: []
+  - label: סוג התקנה
+    value: '[חסר: technical.installation_type – לבדיקה]'
+    ref: null
+    source: null
+    claims: []
+  - label: דף טכני
+    value: '[חסר: sources.technical_sheet – לבדיקה]'
+    ref: null
+    source: null
+    claims: []
+  - label: מחיר
+    value: 5,000 ₪
+    ref: commercial:price_ils
+    source: mody_listing
+    claims:
+    - text: 5,000 ₪
+      ref: commercial:price_ils
+  mody_section:
+    value: את Jacqueline אפשר לראות ב-Gessi Casa, החלל הייעודי של Gessi באולם התצוגה של MODY. הצוות שלנו מלווה אותך
+      מהבחירה ועד ההתקנה.
+    claims:
+    - text: Gessi Casa, החלל הייעודי של Gessi באולם התצוגה של MODY
+      ref: brand:local_presence
+    - text: מלווה אותך מהבחירה ועד ההתקנה
+      ref: house:P5
+deck:
+  cover:
+    source_fields:
+    - product.facts.name
+    - product.facts.brand
+    - product.facts.collection
+    - messaging.one_liner
+    - product.assets.hero_image
+    notes: פתחו מהתמונה. הבמבוק הוא הסיפור כולו.
+  slides:
+  - id: '01'
+    type: product_overview
+    source_fields:
+    - product.facts
+    - product.specs
+    - product.summary
+    notes: 'עובדות מאומתות בלבד: מידות, ספיקה והתקנה עדיין פתוחות, ולכן אינן כאן.'
+  - id: '02'
+    type: positioning
+    source_fields:
+    - strategy.positioning
+    - strategy.value_proposition
+    - strategy.customer_need
+    - strategy.consumer_insight
+    - strategy.differentiators
+    notes: לא ברז אלא פריט חתימה. המיצוב נשען על טענה מאושרת (JQ-3) ועל חומר החתימה.
+  - id: '03'
+    type: target_audience
+    source_fields:
+    - strategy.target_audiences
+    notes: המחיר ממקם את המוצר ב-signature, ולכן המעצב הוא הערוץ הראשון.
+  - id: '04'
+    type: brand_messaging
+    source_fields:
+    - messaging.headline
+    - messaging.one_liner
+    - messaging.tone
+    - messaging.key_messages
+    notes: הכותרת היא כותרת דף הנחיתה. להגיד בשקט, בלי סופרלטיבים.
+  - id: '05'
+    type: product_story
+    source_fields:
+    - story
+    - benefits
+    notes: 'כל תועלת נשענת על עובדה מאומתת: חומר חתימה, JQ-4, פיה מסתובבת.'
+  - id: '06'
+    type: seller_cheat_sheet
+    source_fields:
+    - sales.seller_cheat_sheet
+    - sales.key_talking_points
+    - sales.when_to_recommend
+    notes: שלוש השורות לזכור לקוחות מ-sales.md. לא להבטיח תחזוקה או עמידות.
+  - id: '07'
+    type: launch_plan
+    source_fields:
+    - deck.launch_plan
+    - deck.next_step
+    notes: עד שהדגלים ייסגרו, אין לפרסם מידות או ספיקה.
+  launch_plan:
+  - stage: נכסים
+    action: 'landing.html (דף מוצר) · launch.pptx · landing.md · sales.md · מפרט מאומת מהקובץ · תמונת מוצר מאושרת:
+      [חסר: sources.image – לבדיקה]'
+    status: טיוטה בלבד עד לאישור תמונת מוצר
+    owner: null
+  - stage: הכשרה
+    action: sales.md ושקף כלים למכירה זמינים לצוות המכירות · מסרים מאושרים מחבילת ההשקה
+    status: null
+    owner: null
+  - stage: ערוצים
+    action: '[חסר: launch_plan.channels – לבדיקה]'
+    status: null
+    owner: null
+  - stage: מדידה
+    action: '[חסר: launch_plan.measure – לבדיקה]'
+    status: null
+    owner: null
+  next_step:
+    owner: מנהל/ת מוצר
+    status: מאומת, ניתן לפרסום
+    launch_date: '[חסר: launch_plan.launch_date – לבדיקה]'
+    open_decisions: '[חסר: technical.dimensions_mm – לבדיקה] · [חסר: technical.flow_rate_lpm – לבדיקה] · [חסר: technical.installation_type
+      – לבדיקה] · [חסר: sources.technical_sheet – לבדיקה]'
+sources:
+  house: brand/mody_brand_dna.v1.0.yaml
+  manufacturer: brand/gessi.v1.1.yaml
+  product_sources:
+    product_page: https://areapro.gessi.com/en/haute-culture/collections/jacqueline
+    collection_page: https://www.gessi.com/en/bath/jacqueline
+    mody_listing: assignment_brief
+    technical_sheet: null
+    image: assets/77201_warm-bronze.png
+qa:
+  status: not_ready
+  errors:
+  - code: MISSING_HERO_IMAGE
+    field: product.assets.hero_image
+    message: 'file not found: assets/77201_warm-bronze.png'
+  warnings:
+  - code: LIMIT
+    field: story
+    message: 36 words (recommended ≥ 40)

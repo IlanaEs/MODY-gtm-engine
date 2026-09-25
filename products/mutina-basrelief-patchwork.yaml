@@ -1,0 +1,41 @@
+product:
+  id: mutina-basrelief-patchwork
+  name: Bas-Relief Patchwork
+  brand: mutina
+  collection: Bas-Relief
+  designer: Patricia Urquiola
+  category: tile
+  model_number: null           # קוד המוצר של Mutina לא מופיע בעמוד הקולקציה
+
+technical:
+  material:
+    value: Porcelain clays, artisanally extruded
+    source: collection_page
+  format_cm:
+    value: 18×54
+    source: collection_page
+  thickness_mm:
+    value: 9
+    source: collection_page
+  colour:
+    value: White
+    options: [White, Powder, Black]
+    source: collection_page
+  application: null            # בקולקציה 3 דוגמאות לקיר ו-1 לרצפה. המקור לא מציין איזו
+
+design:
+  signature_material:
+    value: Handmade bas-relief pattern
+    source: collection_page
+  claims_ref: [MB-1, MB-2, MB-3, MB-4, MB-5]
+
+commercial:
+  price_ils: null
+  price_tier: premium          # הוזן ע"י מנהל מוצר
+
+sources:
+  collection_page: https://www.mutina.it/en/collection/bas-relief-by-patricia-urquiola
+  product_page: https://www.mutina.it/en/collection/bas-relief-by-patricia-urquiola
+  mody_selection: https://mody.co.il/hameatzvot/
+  technical_sheet: https://www.mutina.it/downloads/2302/66/BasRelief_catalogue.pdf
+  image: null

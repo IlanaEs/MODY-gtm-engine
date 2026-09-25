@@ -1,0 +1,126 @@
+product: mutina-basrelief-patchwork
+generated: 2026-09-25
+skill_version: 1.1.0
+brand_versions:
+  house: brand/mody_brand_dna.v1.0.yaml
+  manufacturer: brand/mutina.v1.0.yaml
+validator_status: READY_WITH_FLAGS
+publishable: false
+publish_blockers:
+- sources.image
+- product.model_number
+- commercial.price_ils
+flags:
+- '[חסר: technical.application – לבדיקה]'
+- '[חסר: sources.image – לבדיקה]'
+- '[חסר: product.model_number – לבדיקה]'
+- '[חסר: commercial.price_ils – לבדיקה]'
+positioning:
+  one_liner: אריח שבו האור והצל הם חלק מהעיצוב.
+  primary_audience: B
+  secondary_audience: A
+  audience_rule: price_tier=premium → B, A
+  pillars:
+  - P1
+  - P2
+  - P3
+  collection_match: lines.default.collections.bas-relief (no line in input → default,
+    case-insensitive)
+  spec_to_benefit:
+  - from: MB-3
+    benefit: קיר שמשתנה עם האור
+    ref: claim:MB-3
+  - from: technical.material
+    benefit: חומר עם נוכחות, לא הדפס
+    ref: spec:material
+  - from: technical.format_cm + colour
+    benefit: גמישות בהתאמה לחלל
+    ref: spec:format_cm
+  - from: MB-4
+    benefit: שקט נפשי לגבי החומר
+    ref: claim:MB-4
+claims_used:
+- asset: landing
+  text: קולקציה בעבודת יד, שבה אמנות התבליט העתיקה היא הגיבורה, בארבע דוגמאות
+  ref: claim:MB-1
+  source: https://www.mutina.it/en/collection/bas-relief-by-patricia-urquiola
+- asset: landing
+  text: חמר פורצלן שעובר שיחול בעבודת יד
+  ref: claim:MB-2
+  source: https://www.mutina.it/en/collection/bas-relief-by-patricia-urquiola
+- asset: landing
+  text: Patricia Urquiola, אדריכלית ומעצבת ספרדייה
+  ref: claim:MB-5
+  source: https://www.mutina.it/en/designers/patricia-urquiola
+- asset: landing
+  text: העומקים המשתנים בתבליט יוצרים משחק של אור וצל
+  ref: claim:MB-3
+  source: https://www.mutina.it/en/collection/bas-relief-by-patricia-urquiola
+- asset: landing
+  text: ללא VOC
+  ref: claim:MB-4
+  source: https://www.mutina.it/en/collection/bas-relief-by-patricia-urquiola
+- asset: landing
+  text: 18×54 ס"מ
+  ref: spec:format_cm
+  source: collection_page
+- asset: landing
+  text: 9 מ"מ
+  ref: spec:thickness_mm
+  source: collection_page
+- asset: landing
+  text: White (קיים גם ב-Powder וב-Black)
+  ref: spec:colour
+  source: collection_page
+- asset: landing
+  text: תחרות אדריכלות בשבוע העיצוב במילאנו
+  ref: brand:local_presence
+  source: brand/mutina.v1.0.yaml
+- asset: landing
+  text: מלווים אותך מאולם התצוגה ועד ההתקנה
+  ref: house:P5
+  source: brand/mody_brand_dna.v1.0.yaml
+- asset: sales
+  text: אפשר לשלב כמה דוגמאות באותו חלל
+  ref: brand:cross_sell
+  source: brand/mutina.v1.0.yaml
+qa:
+  status: PASS
+  checks:
+    files_present: PASS
+    provenance_valid: PASS
+    provenance_shape: PASS
+    voice_landing.md: PASS
+    voice_deck.md: PASS
+    voice_sales.md: PASS
+    constraints_landing.md: PASS
+    constraints_deck.md: PASS
+    constraints_sales.md: PASS
+    line_isolation_landing.md: PASS
+    line_isolation_deck.md: PASS
+    line_isolation_sales.md: PASS
+    headline_length: PASS
+    deck_structure: PASS
+    landing_structure: PASS
+    sales_structure: PASS
+    flags_in_landing.md: PASS
+    flags_in_deck.md: PASS
+    flags_in_sales.md: PASS
+    price_exact: PASS
+    no_invented_numbers: PASS
+    provenance_refs_resolve: PASS
+    claims_used_integrity: PASS
+    provenance_bound: PASS
+    positioning: PASS
+    versions_match: PASS
+    draft_banner_landing.md: PASS
+    draft_banner_deck.md: PASS
+    draft_banner_sales.md: PASS
+    qa_footer_landing.md: PASS
+    qa_footer_deck.md: PASS
+    qa_footer_sales.md: PASS
+  fails: []
+renders:
+  package: not_ready
+  landing: not_ready
+  deck: not_ready

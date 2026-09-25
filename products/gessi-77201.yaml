@@ -1,0 +1,41 @@
+product:
+  id: gessi-77201
+  name: Jacqueline 77201
+  brand: gessi
+  collection: Jacqueline
+  line: Haute Culture
+  category: basin_mixer
+  model_number: "77201"
+
+technical:
+  material:
+    value: Bamboo root + metal
+    source: collection_page
+  finish:
+    value: { code: "726", name: Warm Bronze Br. PVD }
+    source: product_page
+  features:
+    value: [Low spout, Swivel spout, Horn-effect lever, Connecting flexibles included, Without waste]
+    source: product_page
+  dimensions_mm: null
+  flow_rate_lpm: null
+  installation_type: null      # "Deck mounted" סביר, אבל לא כתוב במקור, ולכן חסר עד אימות
+
+design:
+  signature_material:
+    value: Real bamboo root, handcrafted
+    source: collection_page
+  claims_ref: [JQ-1, JQ-2, JQ-3, JQ-4, JQ-5]
+
+commercial:
+  price_ils:
+    value: 5000
+    source: mody_listing
+  price_tier: signature
+
+sources:
+  product_page: https://areapro.gessi.com/en/haute-culture/collections/jacqueline
+  collection_page: https://www.gessi.com/en/bath/jacqueline
+  mody_listing: assignment_brief          # צילום המסך שצורף למטלה
+  technical_sheet: null
+  image: assets/77201_warm-bronze.png

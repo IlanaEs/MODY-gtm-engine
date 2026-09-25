@@ -1,0 +1,13 @@
+product:
+  name: Unknown Tap
+  brand: newbrand
+  category: basin_mixer
+  model_number: "X1"
+technical:
+  finish: { value: Chrome, source: product_page }
+  features: { value: [Eco flow], source: catalog }
+design:
+  claims_ref: [ZZ-9]
+sources:
+  product_page: https://example.com
+  image: null

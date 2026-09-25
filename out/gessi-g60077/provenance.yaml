@@ -1,0 +1,101 @@
+product: gessi-g60077
+generated: 2026-09-25
+skill_version: 1.1.0
+brand_versions:
+  house: brand/mody_brand_dna.v1.0.yaml
+  manufacturer: brand/gessi.v1.1.yaml
+validator_status: READY_WITH_FLAGS
+publishable: false
+publish_blockers:
+- sources.image
+- commercial.price_ils
+flags:
+- '[חסר: technical.dimensions_mm – לבדיקה]'
+- '[חסר: technical.flow_rate_lpm – לבדיקה]'
+- '[חסר: technical.installation_type – לבדיקה]'
+- '[חסר: sources.image – לבדיקה]'
+- '[חסר: commercial.price_ils – לבדיקה]'
+- '[חסר: sources.technical_sheet – לבדיקה]'
+positioning:
+  one_liner: עיצוב איטלקי למטבח של כל יום.
+  primary_audience: C
+  secondary_audience: B
+  audience_rule: price_tier=core → C, B
+  pillars:
+  - P2
+  - P4
+  - P5
+  collection_story: none
+  vocabulary_used: gessi.voice_extension only (Haute Culture vocabulary excluded,
+    line mismatch)
+  spec_to_benefit:
+  - from: 'technical.features: Pull-out spray'
+    benefit: מגיע לכל פינה בכיור
+    ref: spec:features
+  - from: 'technical.features: Arc spout'
+    benefit: אזור עבודה פתוח מעל הכיור
+    ref: spec:features
+  - from: technical.finish + variants
+    benefit: מתאים לסגנון המטבח
+    ref: spec:finish
+claims_used:
+- asset: landing
+  text: מזלף נשלף מגיע לכל פינה בכיור
+  ref: spec:features
+  source: mody_project_spec
+- asset: landing
+  text: כרום, לבן/כרום או שחור/כרום
+  ref: spec:finish
+  source: mody_project_spec
+- asset: landing
+  text: Gessi היא יצרנית איטלקית של ברזים
+  ref: brand:identity
+  source: brand/gessi.v1.1.yaml
+- asset: landing
+  text: MODY מייבאת אותה בלעדית לישראל
+  ref: brand:relationship
+  source: brand/gessi.v1.1.yaml
+- asset: landing
+  text: מלווה אותך מאולם התצוגה ועד ההתקנה
+  ref: house:P5
+  source: brand/mody_brand_dna.v1.0.yaml
+qa:
+  status: PASS
+  checks:
+    files_present: PASS
+    provenance_valid: PASS
+    provenance_shape: PASS
+    voice_landing.md: PASS
+    voice_deck.md: PASS
+    voice_sales.md: PASS
+    constraints_landing.md: PASS
+    constraints_deck.md: PASS
+    constraints_sales.md: PASS
+    line_isolation_landing.md: PASS
+    line_isolation_deck.md: PASS
+    line_isolation_sales.md: PASS
+    headline_length: PASS
+    deck_structure: PASS
+    landing_structure: PASS
+    sales_structure: PASS
+    flags_in_landing.md: PASS
+    flags_in_deck.md: PASS
+    flags_in_sales.md: PASS
+    price_exact: PASS
+    no_invented_numbers: PASS
+    provenance_refs_resolve: PASS
+    claims_used_integrity: PASS
+    provenance_bound: PASS
+    positioning: PASS
+    versions_match: PASS
+    draft_banner_landing.md: PASS
+    draft_banner_deck.md: PASS
+    draft_banner_sales.md: PASS
+    qa_footer_landing.md: PASS
+    qa_footer_deck.md: PASS
+    qa_footer_sales.md: PASS
+  fails: []
+renders:
+  package: not_ready
+  landing: not_ready
+  deck: not_ready

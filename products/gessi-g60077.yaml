@@ -1,0 +1,34 @@
+product:
+  id: gessi-g60077
+  name: ברז מטבח נשלף קשת
+  brand: gessi
+  collection: null             # המקור לא מציין סדרה של Gessi
+  line: null
+  category: kitchen_mixer
+  model_number: G60077         # מק"ט MODY, לא מספר קטלוג של Gessi
+
+technical:
+  finish:
+    value: { name: Chrome }
+    variants: [White/Chrome (G60077W), Black/Chrome (G60077B)]
+    source: mody_project_spec
+  features:
+    value: [Pull-out spray, Arc spout]
+    source: mody_project_spec
+  dimensions_mm: null
+  flow_rate_lpm: null
+  installation_type: null
+
+design:
+  signature_material: null
+  claims_ref: []
+
+commercial:
+  price_ils: null
+  price_tier: core             # הוזן ע"י מנהל מוצר: מופיע במפרט דירות חדשות
+
+sources:
+  mody_project_spec: https://asden.co.il/wp-content/uploads/2024/02/MODI-VIDA-FINISHES.pdf
+  product_page: https://asden.co.il/wp-content/uploads/2024/02/MODI-VIDA-FINISHES.pdf
+  technical_sheet: null
+  image: null

@@ -1,0 +1,3 @@
+PyYAML>=6.0
+python-pptx>=1.0    # presentation rendering only; without it the pipeline still delivers presentation-content.json
+anthropic>=1.0        # optional: Claude content engine (python -m launch generate --engine claude|auto); the rules engine needs nothing

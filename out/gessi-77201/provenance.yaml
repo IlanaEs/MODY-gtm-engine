@@ -1,0 +1,124 @@
+product: gessi-77201
+generated: 2026-09-25
+skill_version: 1.1.0
+brand_versions:
+  house: brand/mody_brand_dna.v1.0.yaml
+  manufacturer: brand/gessi.v1.1.yaml
+validator_status: READY_WITH_FLAGS
+publishable: true
+flags:
+- '[חסר: technical.dimensions_mm – לבדיקה]'
+- '[חסר: technical.flow_rate_lpm – לבדיקה]'
+- '[חסר: technical.installation_type – לבדיקה]'
+- '[חסר: sources.technical_sheet – לבדיקה]'
+positioning:
+  one_liner: haute couture לכיור. שורש במבוק, יד אומן, אין שניים זהים.
+  primary_audience: A
+  secondary_audience: B
+  audience_rule: price_tier=signature → A, B
+  pillars:
+  - P1
+  - P3
+  - P4
+  spec_to_benefit:
+  - from: design.signature_material
+    benefit: פריט שלא חוזר על עצמו
+    ref: spec:signature_material
+  - from: JQ-4
+    benefit: מגע של אביזר אופנה
+    ref: claim:JQ-4
+  - from: 'technical.features: Swivel spout'
+    benefit: גמישות בשימוש היומיומי
+    ref: spec:features
+  - from: technical.finish
+    benefit: גוון חם שמשלים את הבמבוק
+    ref: spec:finish
+claims_used:
+- asset: landing
+  text: הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי
+  ref: claim:JQ-1
+  source: https://www.gessi.com/en/bath/jacqueline
+- asset: landing
+  text: כל שורש נבחר ביד לפי הקוטר ולפי המרווח בין הפרקים
+  ref: claim:JQ-2
+  source: https://www.gessi.com/us/news-and-events/jacqueline
+- asset: landing
+  text: מעובד באדים ומשולב במתכת
+  ref: claim:JQ-3
+  source: https://www.gessi.com/us/haute-culture/jacqueline
+- asset: landing
+  text: כמו בגד שנתפר לפי מידה, התהליך ידני
+  ref: claim:JQ-5
+  source: https://www.gessi.com/en/bath/jacqueline
+- asset: landing
+  text: בהשראת סוגרי תיקים ואביזרי אופנה
+  ref: claim:JQ-4
+  source: https://www.gessi.com/us/haute-culture/jacqueline
+- asset: landing
+  text: בגימור דמוי קרן
+  ref: spec:features
+  source: product_page
+- asset: landing
+  text: פיה מסתובבת ופיה נמוכה
+  ref: spec:features
+  source: product_page
+- asset: landing
+  text: Warm Bronze Br. PVD
+  ref: spec:finish
+  source: product_page
+- asset: landing
+  text: Bamboo root + metal
+  ref: spec:material
+  source: collection_page
+- asset: landing
+  text: 5,000 ₪
+  ref: commercial:price_ils
+  source: mody_listing
+- asset: landing
+  text: Gessi Casa, החלל הייעודי של Gessi באולם התצוגה של MODY
+  ref: brand:local_presence
+  source: brand/gessi.v1.1.yaml
+- asset: landing
+  text: מלווה אותך מהבחירה ועד ההתקנה
+  ref: house:P5
+  source: brand/mody_brand_dna.v1.0.yaml
+- asset: sales
+  text: Total Look של הסדרה
+  ref: brand:cross_sell
+  source: brand/gessi.v1.1.yaml
+qa:
+  status: PASS
+  checks:
+    files_present: PASS
+    provenance_valid: PASS
+    provenance_shape: PASS
+    voice_landing.md: PASS
+    voice_deck.md: PASS
+    voice_sales.md: PASS
+    constraints_landing.md: PASS
+    constraints_deck.md: PASS
+    constraints_sales.md: PASS
+    line_isolation_landing.md: PASS
+    line_isolation_deck.md: PASS
+    line_isolation_sales.md: PASS
+    headline_length: PASS
+    deck_structure: PASS
+    landing_structure: PASS
+    sales_structure: PASS
+    flags_in_landing.md: PASS
+    flags_in_deck.md: PASS
+    flags_in_sales.md: PASS
+    price_exact: PASS
+    no_invented_numbers: PASS
+    provenance_refs_resolve: PASS
+    claims_used_integrity: PASS
+    provenance_bound: PASS
+    positioning: PASS
+    versions_match: PASS
+    draft_banner_landing.md: PASS
+    draft_banner_deck.md: PASS
+    draft_banner_sales.md: PASS
+    qa_footer_landing.md: PASS
+    qa_footer_deck.md: PASS
+    qa_footer_sales.md: PASS
+  fails: []
