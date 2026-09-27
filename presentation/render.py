@@ -75,17 +75,77 @@ def font_pt(shape):
     return int(sz) / 100 if sz else 12.0
 
 
+# a font with Latin + Hebrew glyphs for measuring line breaks (the template's Noto Sans when installed, else a system
+# font of similar width); without any, the glyph-average estimate below is used
+FONT_CANDIDATES = [os.environ.get("MODY_MEASURE_FONT"), "/Library/Fonts/NotoSans-Regular.ttf", os.path.expanduser("~/Library/Fonts/NotoSans-Regular.ttf"),
+                   "/usr/share/fonts/truetype/noto/NotoSans-Regular.ttf", "/System/Library/Fonts/Supplemental/Arial Unicode.ttf",
+                   "/System/Library/Fonts/Supplemental/Arial.ttf", "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", "C:/Windows/Fonts/arial.ttf"]
+LINE_HEIGHT = 1.2                                          # em, PowerPoint's single spacing for these fonts
+_FONT_CACHE = {}
+
+
+def _measure_font(pt):
+    """PIL font at 4× the point size (widths /4 = points), or None when no usable font file exists."""
+    key = round(pt * 2) / 2
+    if key in _FONT_CACHE:
+        return _FONT_CACHE[key]
+    font = None
+    try:
+        from PIL import ImageFont
+        path = next((f for f in FONT_CANDIDATES if f and os.path.exists(f)), None)
+        font = ImageFont.truetype(path, int(round(key * 4))) if path else None
+    except Exception:
+        font = None
+    _FONT_CACHE[key] = font
+    return font
+
+
+def _insets_pt(shape):
+    bp = shape.text_frame._txBody.find(f"{{{A}}}bodyPr")
+    l = int(bp.get("lIns", 91440)) if bp is not None else 91440
+    r = int(bp.get("rIns", 91440)) if bp is not None else 91440
+    t = int(bp.get("tIns", 45720)) if bp is not None else 45720
+    b = int(bp.get("bIns", 45720)) if bp is not None else 45720
+    return l / 12700, r / 12700, t / 12700, b / 12700
+
+
+def lines_needed(shape, items, pt):
+    """Wrapped line count of the shape's paragraphs at `pt`: measured with a real font when available, else the
+    glyph-average estimate (≈ 0.5 em per glyph)."""
+    li, ri, _, _ = _insets_pt(shape)
+    w_pt = shape.width / 12700 - li - ri
+    texts = [p.text_frame.text for p in ()] or ["".join(r.text for r in para.runs) for para in shape.text_frame.paragraphs]
+    if not any(t.strip() for t in texts):
+        texts = ["".join(i) if isinstance(i, (tuple, list)) else str(i) for i in items]
+    font = _measure_font(pt)
+    total = 0
+    for text in texts:
+        if font is None:
+            per_line = max(1, int(w_pt / (pt * 0.5)))
+            total += max(1, -(-len(text) // per_line))
+            continue
+        words, cur, n = text.split(), "", 1
+        for wd in words:
+            cand = (cur + " " + wd).strip()
+            if cur and font.getlength(cand) / 4 > w_pt:
+                n += 1; cur = wd
+            else:
+                cur = cand
+        total += n
+    return total
+
+
 def overflow_risk(shape, items, pt=None):
-    """Rough capacity estimate (average glyph ≈ 0.5 em, line ≈ 1.2 em) at the shape's font size (or `pt`)."""
+    """(over, lines, capacity) at the shape's font size (or `pt`): wrapped lines × 1.2 em against the box height."""
     pt = pt or font_pt(shape)
-    w_in, h_in = shape.width / 914400, shape.height / 914400
-    per_line = max(1, int(w_in / (pt / 72 * 0.5)))
-    lines = sum(max(1, -(-len("".join(i) if isinstance(i, (tuple, list)) else str(i)) // per_line)) for i in items)
-    capacity = max(1, int(h_in / (pt / 72 * 1.2)))
+    _, _, ti, bi = _insets_pt(shape)
+    h_pt = shape.height / 12700 - ti - bi
+    lines = lines_needed(shape, items, pt)
+    capacity = max(1, int(h_pt / (pt * LINE_HEIGHT) + 0.02))
     return lines > capacity, lines, capacity
 
 
-def shrink_to_fit(shape, items, floor_ratio=0.55, floor_pt=8.0):
+def shrink_to_fit(shape, items, floor_ratio=0.6, floor_pt=9.0):
     """The template's text boxes declare shrink-on-overflow (<a:normAutofit/>), which PowerPoint only recomputes when
     the text is edited; here the same shrink is applied deterministically so the saved file already fits everywhere.
     Returns (original_pt, final_pt, still_over): the font size is reduced in 0.5 pt steps until the estimate fits,
@@ -137,7 +197,7 @@ def render(content, out_dir, template_path=None, product_path=None, filename=Non
         slides = list(prs.slides)
         if len(slides) != SLIDE_COUNT:
             raise ValueError(f"template has {len(slides)} slides, expected {SLIDE_COUNT}")
-        composed = compose_slots(content)
+        composed = compose_slots(content, final=True)         # the final deck: open items by label, never raw flag syntax
         by_name = [{sh.name: sh for sh in s.shapes} for s in slides]
         # groups whose bound content is empty disappear as a whole (optional elements are hidden, not filled)
         empty_groups = set()

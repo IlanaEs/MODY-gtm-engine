@@ -584,8 +584,10 @@ class TestDeck(Base):
         self.assertIn(P.val(self.pkg["messaging"]["headline"]), texts)
         self.assertIn(P.val(self.pkg["strategy"]["positioning"]), texts)
         self.assertIn(self.pkg["sales"]["key_talking_points"][0], texts)
-        for f in self.pkg["meta"]["flags"]:
-            self.assertIn(f, texts)
+        from presentation.content import flag_label
+        for f in self.pkg["meta"]["flags"]:                                   # open items by label, never raw flag syntax (deck.md keeps the flags)
+            self.assertIn(flag_label(f), texts); self.assertNotIn(f, texts)
+        self.assertNotIn("[חסר:", texts); self.assertNotRegex(texts, r"sales\.md|landing\.html|launch\.pptx")
         self.assertNotIn("[Owner]", texts); self.assertNotIn("Lorem", texts)
 
     def test_hero_image_in_both_frames_keeps_aspect_ratio(self):

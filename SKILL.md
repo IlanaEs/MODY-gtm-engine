@@ -177,7 +177,12 @@ The renderers produce the following formats deterministically from the package (
 7. **תוכנית השקה**: the template's 4 stages נכסים / הכשרה / ערוצים / מדידה and הצעד הבא (אחראי | סטטוס | תאריך השקה | החלטות פתוחות) — every open flag appears here
 
 Each slide gets up to 16 lines of text, and every slide (cover included) has speaker notes under `Notes:` from
-`deck.cover.notes` / `deck.slides[].notes`. Flags are never omitted: slide 7 lists every open flag.
+`deck.cover.notes` / `deck.slides[].notes`. Flags are never omitted: slide 7 lists every open flag. In `deck.md` they
+appear verbatim (`[חסר: technical.flow_rate_lpm – לבדיקה]`, what QA matches); in `launch.pptx`, the final internal
+deck, the same open items appear by their house label (`ספיקה (ל/דק) · סוג התקנה – להשלמה`), never as raw flag
+syntax, and no asset is named by its file name (`הנחיות המכירה`, `דף מוצר פנימי`, `מצגת השקה פנימית`). The renderer
+applies the template's own shrink-on-overflow autofit, measured with real font metrics, down to 9 pt; a slot that
+still overflows is reported as `PRESENTATION_TEXT_OVERFLOW_RISK`.
 
 #### 6c. `sales.md`: sales talking points
 ```

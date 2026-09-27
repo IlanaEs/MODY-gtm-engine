@@ -300,9 +300,9 @@ sales:
   - השוואה למותגים אחרים
   - סופרלטיבים והבטחות שאי אפשר לאמת
   key_talking_points:
-  - זה Jacqueline 77201 של GESSI. הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי.
-  - סיפור מותג להציג ללקוח. הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי.
-  - 'גימור שמשלים את שפת החלל. גימור: 726 – Warm Bronze Br. PVD.'
+  - הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי.
+  - 'מידות (מ"מ): H 275 mm × W 80 mm × D 220 mm.'
+  - 'גימור: 726 – Warm Bronze Br. PVD.'
   seller_cheat_sheet:
     positioning: זה Jacqueline 77201 של GESSI. הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי.
     private_customer: סיפור מותג להציג ללקוח. גימור שמשלים את שפת החלל.
@@ -441,7 +441,7 @@ deck:
     - sales.seller_cheat_sheet
     - sales.key_talking_points
     - sales.when_to_recommend
-    notes: שלוש השורות לזכור מתוך sales.md.
+    notes: שלוש השורות לזכור מתוך הנחיות המכירה.
   - id: '07'
     type: launch_plan
     source_fields:
@@ -450,25 +450,25 @@ deck:
     notes: עד שהדגלים ייסגרו, לא לפרסם נתונים חסרים.
   launch_plan:
   - stage: נכסים
-    action: landing.html (דף מוצר) · launch.pptx · landing.md · sales.md · מפרט מאומת מהקובץ
-    status: מוכן לרינדור סופי
+    action: דף מוצר פנימי · מצגת השקה פנימית · הנחיות מכירה · מפרט מאומת מהמקורות
+    status: מוכן להפצה פנימית
     owner: null
   - stage: הכשרה
-    action: sales.md ושקף כלים למכירה זמינים לצוות המכירות · מסרים מאושרים מחבילת ההשקה
+    action: הנחיות המכירה ושקף כלים למכירה לצוות המכירות · מסרים מאושרים מחבילת ההשקה
     status: null
     owner: null
   - stage: ערוצים
-    action: '[חסר: launch_plan.channels – לבדיקה]'
+    action: 'ערוצי ההשקה טרם הוגדרו: להחלטה עם צוות השיווק'
     status: null
     owner: null
   - stage: מדידה
-    action: '[חסר: launch_plan.measure – לבדיקה]'
+    action: 'מדדי ההצלחה טרם הוגדרו: להחלטה לפני ההשקה'
     status: null
     owner: null
   next_step:
     owner: מנהל/ת מוצר
     status: מאומת, ניתן לפרסום
-    launch_date: '[חסר: launch_plan.launch_date – לבדיקה]'
+    launch_date: להגדרה
     open_decisions: '[חסר: technical.flow_rate_lpm – לבדיקה] · [חסר: technical.installation_type – לבדיקה]'
 sources:
   house: brand/mody_brand_dna.v1.0.yaml

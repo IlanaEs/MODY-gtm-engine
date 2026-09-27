@@ -149,7 +149,9 @@ class RulesEngine:
             faq.append({"q": "מה המחיר?", "a": f"{f['price']['display']}.", "flag": None, "claims": [{"text": f["price"]["display"], "ref": "commercial:price_ils"}]})
         s["faq"] = faq or [{"q": "מה זמן האספקה?", "a": "נבדוק ונחזור אלייך.", "flag": None}]
         s["dont_say"] = [f'"{ph}"' for ph in pkgqa.mdqa.constraint_phrases(mfr)] + ["השוואה למותגים אחרים", "סופרלטיבים והבטחות שאי אפשר לאמת"]
-        s["key_talking_points"] = [opening] + [x["text"] for x in s["private_points"][:2]]
+        # לזכור: the first key message + two verified spec lines (each verbatim from the sales guidance); short enough for a slide column
+        facts_ = [x["text"] for x in arch if str(x.get("ref", "")).startswith("spec:")]
+        s["key_talking_points"] = ([first_km] + facts_ + [x["text"] for x in s["private_points"]])[:3]
         s["seller_cheat_sheet"] = {"positioning": opening, "private_customer": " ".join(b["title"] for b in benefits[:2]),
                                    "professional_customer": f"{identity}. " + (f"{relationship}." if relationship else f"{p5_line}."),
                                    "derived_from": sorted({km_ref} | {x["ref"] for x in s["private_points"][:2]} | {"brand:identity", "brand:relationship" if relationship else "house:P5"})}
@@ -182,7 +184,7 @@ class RulesEngine:
         # -- deck notes (cover + 7)
         notes = [f"פתחו מהתמונה. {cat} של {brand}.", "עובדות מאומתות בלבד. שדה חסר נשאר דגל.",
                  f"המיצוב נשען על {' ו'.join(x['name'] for x in pillars)}.", f"קהל ראשי: {primary['name'] if primary else 'לקוח פרטי'}.",
-                 "לומר בשקט, בלי סופרלטיבים.", "כל תועלת נשענת על עובדה מאומתת.", "שלוש השורות לזכור מתוך sales.md.",
+                 "לומר בשקט, בלי סופרלטיבים.", "כל תועלת נשענת על עובדה מאומתת.", "שלוש השורות לזכור מתוך הנחיות המכירה.",
                  "עד שהדגלים ייסגרו, לא לפרסם נתונים חסרים."]
         pkg["deck"]["cover"]["notes"] = notes[0]
         for i, sl in enumerate(pkg["deck"]["slides"]):

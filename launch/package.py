@@ -239,12 +239,12 @@ def launch_plan(ctx):
     stages = SCHEMA["launch_stages"]
     hero = hero_asset(ctx)
     return [
-        {"stage": stages[0], "action": "landing.html (דף מוצר) · launch.pptx · landing.md · sales.md · מפרט מאומת מהקובץ"
+        {"stage": stages[0], "action": "דף מוצר פנימי · מצגת השקה פנימית · הנחיות מכירה · מפרט מאומת מהמקורות"
                                         + ("" if hero["approved"] else " · תמונת מוצר מאושרת: " + MISSING.format(f="sources.image")),
-         "status": "מוכן לרינדור סופי" if hero["approved"] else "טיוטה בלבד עד לאישור תמונת מוצר", "owner": None},
-        {"stage": stages[1], "action": "sales.md ושקף כלים למכירה זמינים לצוות המכירות · מסרים מאושרים מחבילת ההשקה", "status": None, "owner": None},
-        {"stage": stages[2], "action": MISSING.format(f="launch_plan.channels"), "status": None, "owner": None},
-        {"stage": stages[3], "action": MISSING.format(f="launch_plan.measure"), "status": None, "owner": None},
+         "status": "מוכן להפצה פנימית" if hero["approved"] else "טיוטה עד לאישור תמונת מוצר", "owner": None},
+        {"stage": stages[1], "action": "הנחיות המכירה ושקף כלים למכירה לצוות המכירות · מסרים מאושרים מחבילת ההשקה", "status": None, "owner": None},
+        {"stage": stages[2], "action": "ערוצי ההשקה טרם הוגדרו: להחלטה עם צוות השיווק", "status": None, "owner": None},
+        {"stage": stages[3], "action": "מדדי ההצלחה טרם הוגדרו: להחלטה לפני ההשקה", "status": None, "owner": None},
     ]
 
 
@@ -254,7 +254,7 @@ def next_step(ctx):
     flags = list(v["flags"])
     return {"owner": SCHEMA["launch_stage_owner_default"] if flags else None,
             "status": "מאומת, ניתן לפרסום" if v["publishable"] else draft_banner(v),
-            "launch_date": MISSING.format(f="launch_plan.launch_date"),
+            "launch_date": "להגדרה",
             "open_decisions": " · ".join(flags) if flags else "אין"}
 
 

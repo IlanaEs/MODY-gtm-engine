@@ -459,7 +459,7 @@ deck:
     - sales.seller_cheat_sheet
     - sales.key_talking_points
     - sales.when_to_recommend
-    notes: שלוש השורות מתוך sales.md. לא להבטיח התאמה לרצפה או לאזור רטוב.
+    notes: שלוש השורות מתוך הנחיות המכירה. לא להבטיח התאמה לרצפה או לאזור רטוב.
   - id: '07'
     type: launch_plan
     source_fields:
@@ -468,26 +468,26 @@ deck:
     notes: עד שיאומת application, אסור להציע את האריח לרצפה או לאזור רטוב.
   launch_plan:
   - stage: נכסים
-    action: 'landing.html (דף מוצר) · launch.pptx · landing.md · sales.md · מפרט מאומת מהקובץ · תמונת מוצר מאושרת:
-      [חסר: sources.image – לבדיקה]'
-    status: טיוטה בלבד עד לאישור תמונת מוצר
+    action: 'דף מוצר פנימי · מצגת השקה פנימית · הנחיות מכירה · מפרט מאומת מהמקורות · תמונת מוצר מאושרת: [חסר: sources.image
+      – לבדיקה]'
+    status: טיוטה עד לאישור תמונת מוצר
     owner: null
   - stage: הכשרה
-    action: sales.md ושקף כלים למכירה זמינים לצוות המכירות · מסרים מאושרים מחבילת ההשקה
+    action: הנחיות המכירה ושקף כלים למכירה לצוות המכירות · מסרים מאושרים מחבילת ההשקה
     status: null
     owner: null
   - stage: ערוצים
-    action: '[חסר: launch_plan.channels – לבדיקה]'
+    action: 'ערוצי ההשקה טרם הוגדרו: להחלטה עם צוות השיווק'
     status: null
     owner: null
   - stage: מדידה
-    action: '[חסר: launch_plan.measure – לבדיקה]'
+    action: 'מדדי ההצלחה טרם הוגדרו: להחלטה לפני ההשקה'
     status: null
     owner: null
   next_step:
     owner: מנהל/ת מוצר
     status: 'טיוטה – לא לפרסום. חסר: sources.image, product.model_number, commercial.price_ils'
-    launch_date: '[חסר: launch_plan.launch_date – לבדיקה]'
+    launch_date: להגדרה
     open_decisions: '[חסר: technical.application – לבדיקה] · [חסר: sources.image – לבדיקה] · [חסר: product.model_number
       – לבדיקה] · [חסר: commercial.price_ils – לבדיקה]'
 sources:

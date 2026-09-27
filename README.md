@@ -58,6 +58,9 @@ validate.py · qa.py · run_all.py
   and fills the named shapes listed in `presentation/template_map.py` to produce `out/<id>/launch.pptx`.
 - Generated content populates these templates; the renderers never create a layout from scratch, and the template files
   on disk are never modified. Override a template for one run with `MODY_PRODUCT_PAGE_TEMPLATE` / `MODY_PRESENTATION_TEMPLATE`.
+- `launch.pptx` is the final internal deck: open items appear by label (`ספיקה (ל/דק) – להשלמה`), never as raw QA flags,
+  assets are named in business terms, and text is shrunk to fit each box (template autofit, real font metrics, floor 9 pt).
+  `deck.md` keeps the raw flags the QA rules match.
 
 ## Demo: three levels of proof
 | # | Product | What it proves |
