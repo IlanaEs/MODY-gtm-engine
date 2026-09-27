@@ -75,14 +75,37 @@ def font_pt(shape):
     return int(sz) / 100 if sz else 12.0
 
 
-def overflow_risk(shape, items):
-    """Rough capacity estimate (average glyph ≈ 0.5 em, line ≈ 1.2 em). A warning, never a font change."""
-    pt = font_pt(shape)
+def overflow_risk(shape, items, pt=None):
+    """Rough capacity estimate (average glyph ≈ 0.5 em, line ≈ 1.2 em) at the shape's font size (or `pt`)."""
+    pt = pt or font_pt(shape)
     w_in, h_in = shape.width / 914400, shape.height / 914400
     per_line = max(1, int(w_in / (pt / 72 * 0.5)))
     lines = sum(max(1, -(-len("".join(i) if isinstance(i, (tuple, list)) else str(i)) // per_line)) for i in items)
     capacity = max(1, int(h_in / (pt / 72 * 1.2)))
     return lines > capacity, lines, capacity
+
+
+def shrink_to_fit(shape, items, floor_ratio=0.55, floor_pt=8.0):
+    """The template's text boxes declare shrink-on-overflow (<a:normAutofit/>), which PowerPoint only recomputes when
+    the text is edited; here the same shrink is applied deterministically so the saved file already fits everywhere.
+    Returns (original_pt, final_pt, still_over): the font size is reduced in 0.5 pt steps until the estimate fits,
+    never below max(floor_pt, floor_ratio × original). Layout, style and colour are untouched."""
+    from pptx.util import Pt
+    pt = font_pt(shape)
+    risk, _, _ = overflow_risk(shape, items, pt)
+    if not risk:
+        return pt, pt, False
+    floor = max(floor_pt, round(pt * floor_ratio * 2) / 2)
+    size = pt
+    while size > floor:
+        size = round(size - 0.5, 1)
+        risk, _, _ = overflow_risk(shape, items, size)
+        if not risk:
+            break
+    for para in shape.text_frame.paragraphs:
+        for run in para.runs:
+            run.font.size = Pt(size)
+    return pt, size, risk
 
 
 # ---------------------------------------------------------------------------------------------------- image
@@ -163,9 +186,12 @@ def render(content, out_dir, template_path=None, product_path=None, filename=Non
                 items = list(val or [])
                 fill_text(sh, items, bullets=(kind == "bullets"))
             if items:
-                risk, lines, cap = overflow_risk(sh, items)
-                if risk:
-                    warnings.append(f"{cfg.TEXT_OVERFLOW_RISK}: {name} needs ~{lines} lines, box fits ~{cap}; shorten the text")
+                orig, size, still = shrink_to_fit(sh, items)
+                if size != orig:
+                    warnings.append(f"{cfg.TEXT_FIT}: {name} {orig:g} → {size:g} pt (template autofit applied)")
+                if still:
+                    risk, lines, cap = overflow_risk(sh, items, size)
+                    warnings.append(f"{cfg.TEXT_OVERFLOW_RISK}: {name} needs ~{lines} lines, box fits ~{cap} even at {size:g} pt; shorten the text")
         for slide, note in zip(slides, notes or []):            # speaker notes: canonical text, no design
             if note:
                 slide.notes_slide.notes_text_frame.text = str(note)

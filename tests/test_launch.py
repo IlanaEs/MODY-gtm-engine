@@ -524,7 +524,7 @@ class TestProductPage(Base):
         page = open(r["html"], encoding="utf-8").read()
         self.assertIn("data:image/png;base64,", page)
         self.assertFalse(any(w_.startswith("images.hero") for w_ in r["warnings"]))
-        self.assertEqual(page.count("<button"), 4)                                                # 4 thumbnail slots, always
+        self.assertEqual(page.count("<button"), 0)                                                # one photo: no thumbnail strip (4 slots only with alternates)
         self.assertTrue(r["html"].endswith("landing.html"))
         bad = os.path.join(self.fx.dir, "bad.html"); open(bad, "w").write("<p>{{unknown_slot}}</p>")
         r = render_product_page.render(ready.pkg, self.fx.out, ready.product, template_path=bad)

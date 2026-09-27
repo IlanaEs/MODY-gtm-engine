@@ -28,7 +28,7 @@ def fields(pkg, product_path=None):
     """The section-3 content model, filled from the canonical package. Returns (fields, warnings)."""
     f, s, msg, sales, w = pkg["product"]["facts"], pkg["strategy"], pkg["messaging"], pkg["sales"], []
     src = (pkg.get("sources") or {}).get("product_sources") or {}
-    crumbs = [val(f.get("category_label")), val(f.get("collection")), val(f.get("brand")), val(f.get("collection")), val(f.get("model"))]
+    crumbs = list(dict.fromkeys(str(c) for c in (val(f.get("category_label")), val(f.get("brand")), val(f.get("collection")), val(f.get("model"))) if c))
     details = [(r["label"], r["value"]) for r in pkg["landing"]["product_details"] if r.get("value") and "[חסר:" not in str(r["value"])]
     if not 8 <= len(details) <= 14:
         w.append(f"product_details: {len(details)} rows (layout balanced for 8–14); unknown values are left out, never guessed")
@@ -49,8 +49,11 @@ def fields(pkg, product_path=None):
         w.append("cta_link: no MODY product URL in sources (mody_listing); the CTA has no target")
     return {
         "breadcrumb": [c for c in crumbs if c], "brand": val(f["brand"]), "product_name": val(f["name"]), "model": val(f.get("model")) or "",
-        # main headline + supporting copy: the canonical messaging (the deck cover / slide 04 say the same)
-        "short_description": " ".join(x for x in (str(val(msg["headline"]) or "").rstrip(".") + "." if val(msg["headline"]) else "", str(val(msg["one_liner"]) or "")) if x),
+        # main headline + supporting copy: the canonical messaging (the deck cover / slide 04 say the same). A headline that
+        # only restates the page title (brand + name, already the H1 above it) is not repeated in the paragraph.
+        "short_description": " ".join(x for x in ("" if str(val(msg["headline"]) or "").startswith(title(pkg)) else
+                                                    (str(val(msg["headline"]) or "").rstrip(".") + "." if val(msg["headline"]) else ""),
+                                                    str(val(msg["one_liner"]) or "")) if x),
         "cta_text": CTA_TEXT, "cta_link": cta_link or "#",
         "pillars": {"core_value": val(s["value_proposition"]), "positioning": val(s["positioning"]),
                     "target_audience": " · ".join(a["segment"] for a in s["target_audiences"][:2])},
@@ -77,16 +80,20 @@ def render_html(pkg, product_path=None, template_path=None):
         w.append("images.hero: no approved product photo embedded")
     thumbs = ([f'<button class="active" data-src="{hero_src}"><img src="{hero_src}" alt=""></button>'] if hero_src else [])
     thumbs += [f'<button data-src="{_data_uri(p)}"><img src="{_data_uri(p)}" alt=""></button>' for p in d["images"]["alts"]]
-    thumbs += ['<button class="empty" disabled></button>'] * (4 - len(thumbs))
+    if len(thumbs) > 1:                                        # a gallery strip only when there is something to switch between
+        thumbs += ['<button class="empty" disabled></button>'] * (4 - len(thumbs))
+    else:
+        thumbs = []
     slots = {
         "page_title": e(title(pkg)),
         "breadcrumb": "".join(f"<span>{e(str(c))}</span>" for c in d["breadcrumb"]),
-        "brand": e(str(d["brand"])), "product_name": e(str(d["product_name"])), "model": e(str(d["model"])),
+        "brand": e(str(d["brand"])), "product_name": e(str(d["product_name"])),
+        "model": "" if d["model"] and d["model"] in str(d["product_name"]) else e(str(d["model"])),   # "Jacqueline 77201" is not followed by "77201" again
         "short_description": e(d["short_description"]), "cta_text": e(d["cta_text"]), "cta_link": e(d["cta_link"]),
         "core_value": e(str(d["pillars"]["core_value"])), "positioning": e(str(d["pillars"]["positioning"])),
         "target_audience": e(d["pillars"]["target_audience"]),
-        "details_rows": "".join(f"<tr><td>{e(l)}</td><td>{e(str(v))}</td></tr>" for l, v in d["product_details"]),
-        "tech_stats": "".join(f'<div><span class="v">{e(str(t["value"]))}</span><span class="l">{e(t["label"])}</span></div>' for t in d["technical_data"]),
+        "details_rows": "".join(f"<tr><td>{e(l)}</td><td><bdi>{e(str(v))}</bdi></td></tr>" for l, v in d["product_details"]),   # bdi: a Latin value keeps its own order inside the RTL row
+        "tech_stats": "".join(f'<div><span class="v{" long" if len(str(t["value"])) > 22 else ""}"><bdi>{e(str(t["value"]))}</bdi></span><span class="l">{e(t["label"])}</span></div>' for t in d["technical_data"]),
         "manufacturer_link": f'<a class="mlink" href="{e(d["manufacturer_link"])}" target="_blank" rel="noopener">למפרט המלא של היצרן</a>' if d["manufacturer_link"] else "",
         "advantages": "".join(f'<article><span class="n">0{i}</span><h3>{e(a["title"])}</h3><p>{e(a["text"])}</p></article>' for i, a in enumerate(d["advantages"], 1)),
         "product_story": e(d["product_story"]),
