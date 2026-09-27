@@ -1,0 +1,108 @@
+{
+  "inputs": {
+    "name": "Jacqueline 77201",
+    "url": "https://areapro.gessi.com/en/product/77201?finId=726",
+    "image": null
+  },
+  "stages": {
+    "image": {
+      "path": "assets/gessi-jacqueline-77201/gessi-jacqueline-77201_hero.png",
+      "source_url": "https://gessirisorsecdn.gessi.com/zi4/thumb940/77201%23726.webp",
+      "format": "png",
+      "note": "downloaded from the product page (webp), re-encoded as png",
+      "size": [
+        940,
+        940
+      ],
+      "approved": true
+    },
+    "extraction": {
+      "product_file": "/Users/ilanaestrin/Desktop/mody/mody-launch/products/gessi-jacqueline-77201.yaml",
+      "fetch": "browser",
+      "renderer": "playwright:chrome",
+      "render_error": null,
+      "snapshot": "out/gessi-jacqueline-77201/product_page.html",
+      "facts": [
+        "collection",
+        "dimensions_mm",
+        "features",
+        "finish",
+        "model_number"
+      ],
+      "category": {
+        "value": "basin_mixer",
+        "evidence": "Basin mixer, low spout without waste, with connecting flexibles. Horn-effect lever. Swivel spout."
+      },
+      "brand": {
+        "value": "gessi",
+        "evidence": "supplier host areapro.gessi.com"
+      },
+      "line": {
+        "value": "haute_culture",
+        "evidence": "Haute Culture"
+      },
+      "unmapped": []
+    },
+    "validation": {
+      "status": "READY_WITH_FLAGS",
+      "errors": [],
+      "flags": [
+        "[חסר: technical.flow_rate_lpm – לבדיקה]",
+        "[חסר: technical.installation_type – לבדיקה]"
+      ],
+      "publishable": true
+    },
+    "content": {
+      "engine": "rules",
+      "fallback": null,
+      "warnings": [],
+      "usage": []
+    },
+    "pipeline": {
+      "package": "generated",
+      "readiness": {
+        "status": "ready",
+        "blockers": []
+      },
+      "landing": "generated",
+      "markdown": "generated",
+      "deck": "generated",
+      "markdown_qa": "PASS",
+      "files": {
+        "markdown": [
+          "landing.md",
+          "deck.md",
+          "sales.md",
+          "provenance.yaml"
+        ],
+        "landing": "landing.html",
+        "deck": "launch.pptx"
+      },
+      "errors": [],
+      "warnings": [
+        "LIMIT story: 19 words (recommended ≥ 40)",
+        "landing product_details: 7 rows (layout balanced for 8–14); unknown values are left out, never guessed",
+        "landing cta_link: no MODY product URL in sources (mody_listing); the CTA has no target",
+        "PRESENTATION_TEXT_OVERFLOW_RISK: cover.product_name needs ~2 lines, box fits ~1; shorten the text",
+        "PRESENTATION_TEXT_OVERFLOW_RISK: cover.launch_statement needs ~2 lines, box fits ~1; shorten the text",
+        "PRESENTATION_TEXT_OVERFLOW_RISK: overview.lines needs ~5 lines, box fits ~4; shorten the text",
+        "PRESENTATION_TEXT_OVERFLOW_RISK: overview.key_facts needs ~14 lines, box fits ~5; shorten the text",
+        "PRESENTATION_TEXT_OVERFLOW_RISK: positioning.statement needs ~6 lines, box fits ~5; shorten the text",
+        "PRESENTATION_TEXT_OVERFLOW_RISK: audience.private needs ~6 lines, box fits ~3; shorten the text",
+        "PRESENTATION_TEXT_OVERFLOW_RISK: audience.architect needs ~6 lines, box fits ~3; shorten the text",
+        "PRESENTATION_TEXT_OVERFLOW_RISK: audience.sales needs ~11 lines, box fits ~3; shorten the text",
+        "PRESENTATION_TEXT_OVERFLOW_RISK: messaging.key_messages needs ~3 lines, box fits ~2; shorten the text",
+        "PRESENTATION_TEXT_OVERFLOW_RISK: messaging.do_dont needs ~3 lines, box fits ~1; shorten the text",
+        "PRESENTATION_TEXT_OVERFLOW_RISK: story.text needs ~6 lines, box fits ~4; shorten the text",
+        "PRESENTATION_TEXT_OVERFLOW_RISK: story.fact_benefit needs ~10 lines, box fits ~4; shorten the text",
+        "PRESENTATION_TEXT_OVERFLOW_RISK: cheat.when needs ~11 lines, box fits ~4; shorten the text",
+        "PRESENTATION_TEXT_OVERFLOW_RISK: cheat.how needs ~18 lines, box fits ~4; shorten the text",
+        "PRESENTATION_TEXT_OVERFLOW_RISK: cheat.remember needs ~23 lines, box fits ~4; shorten the text",
+        "PRESENTATION_TEXT_OVERFLOW_RISK: launch.1.text needs ~7 lines, box fits ~5; shorten the text",
+        "PRESENTATION_TEXT_OVERFLOW_RISK: launch.next_step needs ~4 lines, box fits ~1; shorten the text"
+      ],
+      "qa": "passed_with_warnings"
+    }
+  },
+  "result": "generated"
+}

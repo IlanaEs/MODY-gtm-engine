@@ -1,0 +1,153 @@
+product: gessi-jacqueline-77201
+generated: 2026-09-27
+skill_version: 1.1.0
+brand_versions:
+  house: brand/mody_brand_dna.v1.0.yaml
+  manufacturer: brand/gessi.v1.1.yaml
+validator_status: READY_WITH_FLAGS
+publishable: true
+flags:
+- '[חסר: technical.flow_rate_lpm – לבדיקה]'
+- '[חסר: technical.installation_type – לבדיקה]'
+positioning:
+  one_liner: ברז לכיור של GESSI. כל פריט הוא אמירה עיצובית ולא רק פתרון.
+  primary_audience: A
+  secondary_audience: B
+  audience_rule: price_tier=signature → A, B
+  pillars:
+  - P1
+  - P3
+  - P4
+  spec_to_benefit:
+  - from: claim JQ-1
+    benefit: סיפור מותג להציג ללקוח
+    ref: claim:JQ-1
+  - from: technical.finish
+    benefit: גימור שמשלים את שפת החלל
+    ref: spec:finish
+  - from: technical.features
+    benefit: נוחות בשימוש היומיומי
+    ref: spec:features
+  - from: technical.dimensions_mm
+    benefit: התאמה מדויקת לחלל
+    ref: spec:dimensions_mm
+claims_used:
+- asset: landing
+  text: הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי
+  ref: claim:JQ-1
+  source: https://www.gessi.com/en/bath/jacqueline
+- asset: landing
+  text: הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי
+  ref: claim:JQ-1
+  source: https://www.gessi.com/en/bath/jacqueline
+- asset: landing
+  text: 726 – Warm Bronze Br. PVD
+  ref: spec:finish
+  source: product_page
+- asset: landing
+  text: Low spout without waste · With connecting flexibles · Horn-effect lever ·
+    Swivel spout
+  ref: spec:features
+  source: product_page
+- asset: landing
+  text: 726 – Warm Bronze Br. PVD
+  ref: spec:finish
+  source: product_page
+- asset: landing
+  text: Low spout without waste · With connecting flexibles · Horn-effect lever ·
+    Swivel spout
+  ref: spec:features
+  source: product_page
+- asset: landing
+  text: H 275 mm × W 80 mm × D 220 mm
+  ref: spec:dimensions_mm
+  source: product_page
+- asset: landing
+  text: 5,000 ₪
+  ref: commercial:price_ils
+  source: mody_internal
+- asset: landing
+  text: יצרנית איטלקית של ברזים ופתרונות Wellness לחדר הרחצה
+  ref: brand:identity
+  source: brand/gessi.v1.1.yaml
+- asset: landing
+  text: MODY – יבואן בלעדי בישראל
+  ref: brand:relationship
+  source: brand/gessi.v1.1.yaml
+- asset: landing
+  text: ליווי מאולם התצוגה ועד ההתקנה
+  ref: house:P5
+  source: brand/mody_brand_dna.v1.0.yaml
+- asset: sales
+  text: הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי
+  ref: claim:JQ-1
+  source: https://www.gessi.com/en/bath/jacqueline
+- asset: sales
+  text: H 275 mm × W 80 mm × D 220 mm
+  ref: spec:dimensions_mm
+  source: product_page
+- asset: sales
+  text: 726 – Warm Bronze Br. PVD
+  ref: spec:finish
+  source: product_page
+- asset: sales
+  text: MODY – יבואן בלעדי בישראל
+  ref: brand:relationship
+  source: brand/gessi.v1.1.yaml
+- asset: sales
+  text: הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי
+  ref: claim:JQ-1
+  source: https://www.gessi.com/en/bath/jacqueline
+- asset: sales
+  text: 726 – Warm Bronze Br. PVD
+  ref: spec:finish
+  source: product_page
+- asset: sales
+  text: Low spout without waste · With connecting flexibles · Horn-effect lever ·
+    Swivel spout
+  ref: spec:features
+  source: product_page
+- asset: sales
+  text: 5,000 ₪
+  ref: commercial:price_ils
+  source: mody_internal
+qa:
+  status: PASS
+  checks:
+    files_present: PASS
+    provenance_valid: PASS
+    provenance_shape: PASS
+    voice_landing.md: PASS
+    voice_deck.md: PASS
+    voice_sales.md: PASS
+    constraints_landing.md: PASS
+    constraints_deck.md: PASS
+    constraints_sales.md: PASS
+    line_isolation_landing.md: PASS
+    line_isolation_deck.md: PASS
+    line_isolation_sales.md: PASS
+    headline_length: PASS
+    deck_structure: PASS
+    landing_structure: PASS
+    sales_structure: PASS
+    flags_in_landing.md: PASS
+    flags_in_deck.md: PASS
+    flags_in_sales.md: PASS
+    price_exact: PASS
+    no_invented_numbers: PASS
+    provenance_refs_resolve: PASS
+    claims_used_integrity: PASS
+    provenance_bound: PASS
+    positioning: PASS
+    versions_match: PASS
+    draft_banner_landing.md: PASS
+    draft_banner_deck.md: PASS
+    draft_banner_sales.md: PASS
+    qa_footer_landing.md: PASS
+    qa_footer_deck.md: PASS
+    qa_footer_sales.md: PASS
+  fails: []
+renders:
+  package: passed_with_warnings
+  landing: generated
+  deck: generated

@@ -8,6 +8,7 @@ pip install -r requirements.txt             # PyYAML + python-pptx (use a venv)
 python validate.py products/<id>.yaml      # check the input
 # run the Skill (SKILL.md) on the product      → out/<id>/
 python -m launch generate --name "…" --url <supplier page> --image <approved image>   # SKILL step 0: everything, no manual editing
+python -m launch generate --name "…" --url <supplier page> --approve-page-image        # no image file: the page's product photo, signed off by the flag
 python -m launch skeleton products/<id>.yaml > out/<id>/launch_package.yaml   # SKILL step 6: the Skill completes this ONE file
 python -m launch qa products/<id>.yaml        # package QA only
 python -m launch run products/<id>.yaml       # package QA → landing.md/html · deck.md · sales.md · provenance.yaml · launch.pptx → qa.py
@@ -18,6 +19,19 @@ All commands run from the project root. Exit code is 0 only when nothing is BLOC
 
 Negative controls: `python validate.py tests/broken_example.yaml` must print BLOCKED and exit 1;
 `python -m unittest tests.test_planted` runs `tests/landing_with_planted_errors.md` through qa.py next to a real deck, sales file and provenance, and asserts FAIL.
+
+## Supplier pages: static or browser-rendered
+`launch/extract.py` reads the static HTML first. When it yields no facts and the URL is remote (a JavaScript app that serves
+an empty shell, e.g. `areapro.gessi.com`), the page is rendered in a headless browser (Playwright driving the installed Chrome
+or Edge, else `playwright install chromium`) and the rendered DOM goes through the same rules: table / definition-list rows,
+`Label: value` lines, sibling-element rows (`Height` / `275 mm` → `dimensions_mm`), the finish stated as `<code> - <name>` where
+the code is also in the URL (`?finId=726`), the model number as a bare `<h1>` code, the collection as one of the manufacturer
+file's own collection names, features from the page's own description sentence, and the technical-sheet PDF link. A link to a
+file is never a value. The product file records `extraction.fetch` (static | browser), the renderer, the evidence line of every
+fact, `sources.product_page_snapshot` (the HTML that was read, saved in `out/<id>/product_page.html`) and, without `--image`,
+`sources.image_source` (the page photo's URL; `--approve-page-image` is MODY's sign-off, otherwise the final assets stay withheld).
+`--render never|always` overrides the automatic choice. Without a browser the fallback reports why and the run continues
+with what the static page gave (usually BLOCKED by the validator).
 
 ## Structure
 ```
@@ -51,6 +65,7 @@ validate.py · qa.py · run_all.py
 | 1 | GESSI Jacqueline 77201 | Signature product with a rich story. Publishable |
 | 2 | GESSI G60077 (kitchen) | Same manufacturer, no collection story. The skill does not invent one |
 | 3 | MUTINA Bas-Relief Patchwork | Different manufacturer and category. The house layer does not change |
+| 4 | GESSI Jacqueline 77201 from its supplier URL (`gessi-jacqueline-77201`) | The same product, generated end to end by `launch generate` from `areapro.gessi.com` (a JavaScript page: browser-rendered fetch), its own product photo, the technical-sheet link and a snapshot of the page as provenance. Product 1 stays the hand-curated golden the test suite is built on |
 
 ## What products 2–3 exposed (and the fix)
 - schema v1.0 → v1.1: `image` and `model_number` block publishing, not generation. Missing fields are detected by category profile.
@@ -64,7 +79,7 @@ validate.py · qa.py · run_all.py
 
 ## Single source of truth
 ```
-name + supplier URL + approved image ──► extract (facts + evidence) ──► products/<id>.yaml ──► validate
+name + supplier URL + approved image ──► extract (static, else browser-rendered: facts + evidence) ──► products/<id>.yaml ──► validate
    ──► content engine (rules | Claude) + brand DNA ──► launch_package.yaml ──► launch.qa ──► render_md (landing.md, deck.md, sales.md, provenance.yaml)
                                                                     ├─► render_product_page (landing.html, MODY Product Page Template)
                                                                     └─► deck adapter → presentation.render (launch.pptx)

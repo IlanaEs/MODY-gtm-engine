@@ -1,0 +1,490 @@
+meta:
+  product: gessi-jacqueline-77201
+  generated: '2026-09-27'
+  skill_version: 1.1.0
+  brand_versions:
+    house: brand/mody_brand_dna.v1.0.yaml
+    manufacturer: brand/gessi.v1.1.yaml
+  validator_status: READY_WITH_FLAGS
+  publishable: true
+  publish_blockers: []
+  flags:
+  - '[חסר: technical.flow_rate_lpm – לבדיקה]'
+  - '[חסר: technical.installation_type – לבדיקה]'
+  draft_banner: null
+product:
+  facts:
+    name:
+      value: Jacqueline 77201
+      source: product_page
+    collection:
+      value: Jacqueline
+      source: product_page
+    line:
+      value: Haute Culture
+      source: product_page
+    model:
+      value: '77201'
+      source: product_page
+    designer:
+      value: null
+      source: null
+    brand:
+      value: GESSI
+      source: product_page
+    brand_id:
+      value: gessi
+      source: product_page
+    category:
+      value: basin_mixer
+      source: product_page
+    category_label:
+      value: ברז לכיור
+      source: product_page
+    price:
+      value: 5000
+      display: 5,000 ₪
+      source: mody_internal
+    price_tier:
+      value: signature
+      source: mody_internal
+    availability:
+      value: null
+      source: null
+    launch_status:
+      value: null
+      source: null
+  specs:
+  - field: finish
+    label: גימור
+    value: 726 – Warm Bronze Br. PVD
+    source: product_page
+    ref: spec:finish
+    flag: null
+    evidence: 'Finish selector: 726 - warm bronze br. pvd'
+  - field: features
+    label: מאפיינים
+    value: Low spout without waste · With connecting flexibles · Horn-effect lever · Swivel spout
+    source: product_page
+    ref: spec:features
+    flag: null
+    evidence: 'Description: Basin mixer, low spout without waste, with connecting flexibles. Horn-effect lever.
+      Swivel spout.'
+  - field: dimensions_mm
+    label: מידות (מ"מ)
+    value: H 275 mm × W 80 mm × D 220 mm
+    source: product_page
+    ref: spec:dimensions_mm
+    flag: null
+    evidence: 'Height: 275 mm · Width: 80 mm · Depth: 220 mm'
+  - field: flow_rate_lpm
+    label: ספיקה (ל/דק)
+    value: null
+    source: null
+    ref: null
+    flag: '[חסר: technical.flow_rate_lpm – לבדיקה]'
+  - field: installation_type
+    label: סוג התקנה
+    value: null
+    source: null
+    ref: null
+    flag: '[חסר: technical.installation_type – לבדיקה]'
+  assets:
+    hero_image:
+      path: assets/gessi-jacqueline-77201/gessi-jacqueline-77201_hero.png
+      source: sources.image
+      exists: true
+      approved: true
+      format: png
+  summary:
+    value: 'ברז לכיור של GESSI מקולקציית Jacqueline: גימור 726 – Warm Bronze Br. PVD, מידות (מ"מ) H 275 mm × W 80
+      mm × D 220 mm.'
+    derived_from:
+    - spec:finish
+    - spec:dimensions_mm
+    - brand:identity
+strategy:
+  positioning:
+    value: ברז לכיור מבית GESSI, שנבחר ל-MODY בזכות עיצוב מוקפד ואיכות וגימור. יצרנית איטלקית של ברזים ופתרונות
+      Wellness לחדר הרחצה.
+    derived_from:
+    - house:P1
+    - house:P3
+    - brand:identity
+  value_proposition:
+    value: עיצוב בינלאומי מוקפד, שנבחר בקפידה, ומגיע אליך עם ליווי מקצועי.
+    derived_from:
+    - house:value_proposition
+  customer_need:
+    value: ייחודיות וסיפור להציג ללקוח.
+    derived_from:
+    - house:A
+  consumer_insight:
+    value: לאדריכלים ומעצבי פנים חשוב ייחודיות.
+    derived_from:
+    - house:A
+  differentiators:
+  - value: הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי.
+    derived_from:
+    - claim:JQ-1
+  audience_rule: price_tier=signature → A, B
+  target_audiences:
+  - id: A
+    segment: אדריכלים ומעצבי פנים
+    decision_driver: ייחודיות · סיפור להציג ללקוח · גימורים וזמינות
+    needs_line: צריכים נתונים מדויקים ונקודות מכירה ללקוח הסופי
+    need: נתונים מדויקים ונקודות מכירה ללקוח הסופי.
+    relevance: null
+    derived_from:
+    - house:A
+  - id: B
+    segment: לקוחות פרטיים בבנייה או שיפוץ ברמה גבוהה
+    decision_driver: פריט שמגדיר את החלל · איכות לאורך זמן
+    needs_line: צריכים השראה וביטחון ברכישה וליווי
+    need: השראה וביטחון ברכישה.
+    relevance: null
+    derived_from:
+    - house:B
+  pillars:
+  - id: P1
+    support: הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי (JQ-1)
+    refs:
+    - claim:JQ-1
+    name: עיצוב מוקפד
+  - id: P3
+    support: 'גימור: 726 – Warm Bronze Br. PVD'
+    refs:
+    - spec:finish
+    name: איכות וגימור
+  - id: P4
+    support: 'מאפיינים: Low spout without waste · With connecting flexibles · Horn-effect lever · Swivel spout'
+    refs:
+    - spec:features
+    name: דקורטיבי + פרקטי
+  spec_to_benefit:
+  - from: claim JQ-1
+    display: הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי (JQ-1)
+    benefit: סיפור מותג להציג ללקוח
+    ref: claim:JQ-1
+  - from: technical.finish
+    display: 726 – Warm Bronze Br. PVD
+    benefit: גימור שמשלים את שפת החלל
+    ref: spec:finish
+  - from: technical.features
+    display: Low spout without waste · With connecting flexibles · Horn-effect lever · Swivel spout
+    benefit: נוחות בשימוש היומיומי
+    ref: spec:features
+  - from: technical.dimensions_mm
+    display: H 275 mm × W 80 mm × D 220 mm
+    benefit: התאמה מדויקת לחלל
+    ref: spec:dimensions_mm
+  notes: {}
+messaging:
+  headline:
+    value: 'GESSI Jacqueline 77201: ברז לכיור'
+    derived_from:
+    - spec:finish
+    - spec:dimensions_mm
+    - brand:identity
+  one_liner:
+    value: ברז לכיור של GESSI. כל פריט הוא אמירה עיצובית ולא רק פתרון.
+    derived_from:
+    - house:P1
+    - brand:identity
+  tone:
+  - אלגנטי
+  - בטוח
+  - שקט
+  - מדויק
+  key_messages:
+  - value: הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי.
+    derived_from:
+    - claim:JQ-1
+  - value: כל שורש נבחר ידנית לפי קוטר ומרווח בין הפרקים.
+    derived_from:
+    - claim:JQ-2
+  - value: הבמבוק מעובד באדים ומשולב במתכת בעבודת יד. כל פריט ייחודי.
+    derived_from:
+    - claim:JQ-3
+story:
+  value: Haute couture לחדר הרחצה. חומר טבעי, יד אומן, ואין שניים זהים. הקולקציה הראשונה של Gessi שנוצרה משורשי
+    במבוק אמיתי.
+  claims:
+  - text: הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי
+    ref: claim:JQ-1
+  derived_from:
+  - claim:JQ-1
+  expected: true
+benefits:
+- title: סיפור מותג להציג ללקוח.
+  text: הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי.
+  fact: הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי
+  ref: claim:JQ-1
+  claims:
+  - text: הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי
+    ref: claim:JQ-1
+  derived_from:
+  - claim:JQ-1
+- title: גימור שמשלים את שפת החלל.
+  text: 'גימור: 726 – Warm Bronze Br. PVD.'
+  fact: 726 – Warm Bronze Br. PVD
+  ref: spec:finish
+  claims:
+  - text: 726 – Warm Bronze Br. PVD
+    ref: spec:finish
+  derived_from:
+  - spec:finish
+- title: נוחות בשימוש היומיומי.
+  text: 'מאפיינים: Low spout without waste · With connecting flexibles · Horn-effect lever · Swivel spout.'
+  fact: Low spout without waste · With connecting flexibles · Horn-effect lever · Swivel spout
+  ref: spec:features
+  claims:
+  - text: Low spout without waste · With connecting flexibles · Horn-effect lever · Swivel spout
+    ref: spec:features
+  derived_from:
+  - spec:features
+sales:
+  opening:
+    value: זה Jacqueline 77201 של GESSI. הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי.
+    ref: claim:JQ-1
+    claims:
+    - text: הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי
+      ref: claim:JQ-1
+  architect_points:
+  - text: 'מידות (מ"מ): H 275 mm × W 80 mm × D 220 mm.'
+    ref: spec:dimensions_mm
+    claims:
+    - text: H 275 mm × W 80 mm × D 220 mm
+      ref: spec:dimensions_mm
+  - text: 'גימור: 726 – Warm Bronze Br. PVD.'
+    ref: spec:finish
+    claims:
+    - text: 726 – Warm Bronze Br. PVD
+      ref: spec:finish
+  - text: MODY – יבואן בלעדי בישראל.
+    ref: brand:relationship
+    claims:
+    - text: MODY – יבואן בלעדי בישראל
+      ref: brand:relationship
+  private_points:
+  - text: סיפור מותג להציג ללקוח. הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי.
+    ref: claim:JQ-1
+    claims:
+    - text: הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי
+      ref: claim:JQ-1
+  - text: 'גימור שמשלים את שפת החלל. גימור: 726 – Warm Bronze Br. PVD.'
+    ref: spec:finish
+    claims:
+    - text: 726 – Warm Bronze Br. PVD
+      ref: spec:finish
+  - text: 'נוחות בשימוש היומיומי. מאפיינים: Low spout without waste · With connecting flexibles · Horn-effect lever
+      · Swivel spout.'
+    ref: spec:features
+    claims:
+    - text: Low spout without waste · With connecting flexibles · Horn-effect lever · Swivel spout
+      ref: spec:features
+  faq:
+  - q: מה הספיקה?
+    a: 'נבדוק ונחזור אלייך. [חסר: technical.flow_rate_lpm – לבדיקה]'
+    flag: '[חסר: technical.flow_rate_lpm – לבדיקה]'
+  - q: איך הוא מותקן?
+    a: 'נבדוק ונחזור אלייך. [חסר: technical.installation_type – לבדיקה]'
+    flag: '[חסר: technical.installation_type – לבדיקה]'
+  - q: מה המחיר?
+    a: 5,000 ₪.
+    flag: null
+    claims:
+    - text: 5,000 ₪
+      ref: commercial:price_ils
+  dont_say:
+  - השוואה למותגים אחרים
+  - סופרלטיבים והבטחות שאי אפשר לאמת
+  key_talking_points:
+  - זה Jacqueline 77201 של GESSI. הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי.
+  - סיפור מותג להציג ללקוח. הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי.
+  - 'גימור שמשלים את שפת החלל. גימור: 726 – Warm Bronze Br. PVD.'
+  seller_cheat_sheet:
+    positioning: זה Jacqueline 77201 של GESSI. הקולקציה הראשונה של Gessi שנוצרה משורשי במבוק אמיתי.
+    private_customer: סיפור מותג להציג ללקוח. גימור שמשלים את שפת החלל.
+    professional_customer: יצרנית איטלקית של ברזים ופתרונות Wellness לחדר הרחצה. MODY – יבואן בלעדי בישראל.
+    derived_from:
+    - brand:identity
+    - brand:relationship
+    - claim:JQ-1
+    - spec:finish
+  when_to_recommend:
+  - פרויקט ברמה גבוהה שמחפש ברז לכיור עם עיצוב מוקפד
+  - אדריכלים ומעצבי פנים
+  - חלל שבו ברז לכיור הוא פריט שמגדיר
+  - לקוח שמבקש GESSI
+  when_to_recommend_derived_from:
+  - house:P1
+  - house:A
+  - brand:identity
+landing:
+  hero:
+    headline: messaging.headline
+    sub: messaging.one_liner
+    image: product.assets.hero_image
+  sections:
+  - story
+  - benefits
+  - details
+  - mody
+  product_details:
+  - label: מותג / סדרה
+    value: GESSI · Jacqueline · Haute Culture
+    ref: null
+    source: product_page
+  - label: מק"ט
+    value: '77201'
+    ref: null
+    source: product_page
+  - label: סוג
+    value: ברז לכיור
+    ref: null
+    source: product_page
+  - label: גימור
+    value: 726 – Warm Bronze Br. PVD
+    ref: spec:finish
+    source: product_page
+    claims:
+    - text: 726 – Warm Bronze Br. PVD
+      ref: spec:finish
+  - label: מאפיינים
+    value: Low spout without waste · With connecting flexibles · Horn-effect lever · Swivel spout
+    ref: spec:features
+    source: product_page
+    claims:
+    - text: Low spout without waste · With connecting flexibles · Horn-effect lever · Swivel spout
+      ref: spec:features
+  - label: מידות (מ"מ)
+    value: H 275 mm × W 80 mm × D 220 mm
+    ref: spec:dimensions_mm
+    source: product_page
+    claims:
+    - text: H 275 mm × W 80 mm × D 220 mm
+      ref: spec:dimensions_mm
+  - label: ספיקה (ל/דק)
+    value: '[חסר: technical.flow_rate_lpm – לבדיקה]'
+    ref: null
+    source: null
+  - label: סוג התקנה
+    value: '[חסר: technical.installation_type – לבדיקה]'
+    ref: null
+    source: null
+  - label: מחיר
+    value: 5,000 ₪
+    ref: commercial:price_ils
+    source: mody_internal
+    claims:
+    - text: 5,000 ₪
+      ref: commercial:price_ils
+  mody_section:
+    value: יצרנית איטלקית של ברזים ופתרונות Wellness לחדר הרחצה. MODY – יבואן בלעדי בישראל, ליווי מאולם התצוגה ועד
+      ההתקנה.
+    claims:
+    - text: יצרנית איטלקית של ברזים ופתרונות Wellness לחדר הרחצה
+      ref: brand:identity
+    - text: MODY – יבואן בלעדי בישראל
+      ref: brand:relationship
+    - text: ליווי מאולם התצוגה ועד ההתקנה
+      ref: house:P5
+deck:
+  cover:
+    source_fields:
+    - product.facts.name
+    - product.facts.brand
+    - product.facts.collection
+    - messaging.one_liner
+    - product.assets.hero_image
+    notes: פתחו מהתמונה. ברז לכיור של GESSI.
+  slides:
+  - id: '01'
+    type: product_overview
+    source_fields:
+    - product.facts
+    - product.specs
+    - product.summary
+    notes: עובדות מאומתות בלבד. שדה חסר נשאר דגל.
+  - id: '02'
+    type: positioning
+    source_fields:
+    - strategy.positioning
+    - strategy.value_proposition
+    - strategy.customer_need
+    - strategy.consumer_insight
+    - strategy.differentiators
+    notes: המיצוב נשען על עיצוב מוקפד ואיכות וגימור ודקורטיבי + פרקטי.
+  - id: '03'
+    type: target_audience
+    source_fields:
+    - strategy.target_audiences
+    notes: 'קהל ראשי: אדריכלים ומעצבי פנים.'
+  - id: '04'
+    type: brand_messaging
+    source_fields:
+    - messaging.headline
+    - messaging.one_liner
+    - messaging.tone
+    - messaging.key_messages
+    notes: לומר בשקט, בלי סופרלטיבים.
+  - id: '05'
+    type: product_story
+    source_fields:
+    - story
+    - benefits
+    notes: כל תועלת נשענת על עובדה מאומתת.
+  - id: '06'
+    type: seller_cheat_sheet
+    source_fields:
+    - sales.seller_cheat_sheet
+    - sales.key_talking_points
+    - sales.when_to_recommend
+    notes: שלוש השורות לזכור מתוך sales.md.
+  - id: '07'
+    type: launch_plan
+    source_fields:
+    - deck.launch_plan
+    - deck.next_step
+    notes: עד שהדגלים ייסגרו, לא לפרסם נתונים חסרים.
+  launch_plan:
+  - stage: נכסים
+    action: landing.html (דף מוצר) · launch.pptx · landing.md · sales.md · מפרט מאומת מהקובץ
+    status: מוכן לרינדור סופי
+    owner: null
+  - stage: הכשרה
+    action: sales.md ושקף כלים למכירה זמינים לצוות המכירות · מסרים מאושרים מחבילת ההשקה
+    status: null
+    owner: null
+  - stage: ערוצים
+    action: '[חסר: launch_plan.channels – לבדיקה]'
+    status: null
+    owner: null
+  - stage: מדידה
+    action: '[חסר: launch_plan.measure – לבדיקה]'
+    status: null
+    owner: null
+  next_step:
+    owner: מנהל/ת מוצר
+    status: מאומת, ניתן לפרסום
+    launch_date: '[חסר: launch_plan.launch_date – לבדיקה]'
+    open_decisions: '[חסר: technical.flow_rate_lpm – לבדיקה] · [חסר: technical.installation_type – לבדיקה]'
+sources:
+  house: brand/mody_brand_dna.v1.0.yaml
+  manufacturer: brand/gessi.v1.1.yaml
+  product_sources:
+    product_page: https://areapro.gessi.com/en/product/77201?finId=726
+    technical_sheet: https://gessistorage.blob.core.windows.net/techsheets/GPF7720100000G001/GPF7720100000G001_EN_GB.pdf
+    image: assets/gessi-jacqueline-77201/gessi-jacqueline-77201_hero.png
+    image_approved: true
+    image_source: https://gessirisorsecdn.gessi.com/zi4/thumb940/77201%23726.webp
+    product_page_snapshot: out/gessi-jacqueline-77201/product_page.html
+    mody_internal: MODY internal commercial data (intake)
+qa:
+  status: passed_with_warnings
+  errors: []
+  warnings:
+  - code: LIMIT
+    field: story
+    message: 19 words (recommended ≥ 40)

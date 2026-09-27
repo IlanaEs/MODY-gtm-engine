@@ -1,3 +1,5 @@
 PyYAML>=6.0
 python-pptx>=1.0    # presentation rendering only; without it the pipeline still delivers presentation-content.json
 anthropic>=1.0        # optional: Claude content engine (python -m launch generate --engine claude|auto); the rules engine needs nothing
+playwright>=1.45     # optional: browser-rendered extraction fallback for JavaScript supplier pages (drives the installed Chrome / Edge; or `playwright install chromium`)
+certifi>=2024.0      # optional: CA bundle for interpreters that ship without one (python.org macOS builds)

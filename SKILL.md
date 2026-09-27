@@ -29,11 +29,14 @@ brand/<manufacturer>.v*.yaml ──┘                    (single source of trut
 Inputs: product name, supplier / manufacturer product-page URL, approved product image. Run
 `python -m launch generate --name "<name>" --url <url> --image <path> [--price-ils N --price-tier core|premium|signature]`.
 It executes every step below without manual editing: fetch + extract the visible facts (`launch/extract.py`, each value
-with `source: product_page` + the evidence line; unknown = null, never inferred) → `products/<id>.yaml` → validate →
+with `source: product_page` + the evidence line; unknown = null, never inferred; a JavaScript-rendered page that serves an
+empty shell is rendered in a headless browser and read the same way, recorded as `extraction.fetch: browser`) → `products/<id>.yaml` → validate →
 content engine (`launch/content_engine.py`: Claude with these step-6 instructions when the API is available, else the
 deterministic rules engine; either way QA-gated) → `out/<id>/launch_package.yaml` → package QA + readiness → `landing.html`
 (MODY Product Page Template) + `launch.pptx` (`assets/templates/presentation/`) → `qa.py` → reports.
 Steps 1-8 describe what that command does, and remain the procedure when a step is run by hand.
+Without `--image` the page's own product photo is downloaded (`sources.image_source` = its URL) and counts as approved only
+with `--approve-page-image` (MODY sign-off); the HTML that was read is kept as `sources.product_page_snapshot`.
 (`python -m launch intake` writes only the product file, for products whose facts are entered manually.)
 
 ### 1. Validate input

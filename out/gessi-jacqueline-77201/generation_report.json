@@ -1,0 +1,109 @@
+{
+  "product": "gessi-jacqueline-77201",
+  "generated": "2026-09-27",
+  "package": "generated",
+  "qa": {
+    "status": "passed_with_warnings",
+    "errors": [],
+    "warnings": [
+      {
+        "code": "LIMIT",
+        "field": "story",
+        "message": "19 words (recommended ≥ 40)"
+      }
+    ],
+    "checks": {
+      "schema": "PASS",
+      "facts_match_sources": "PASS",
+      "sources": "PASS",
+      "required_content": "PASS",
+      "benefits": "PASS",
+      "hero": "PASS",
+      "readiness": "PASS",
+      "deck_structure": "PASS",
+      "limits": "PASS",
+      "content_rules": "PASS",
+      "provenance": "PASS"
+    }
+  },
+  "readiness": {
+    "status": "ready",
+    "blockers": []
+  },
+  "landing": "generated",
+  "markdown": "generated",
+  "deck": "generated",
+  "markdown_qa": "PASS",
+  "files": {
+    "markdown": [
+      "landing.md",
+      "deck.md",
+      "sales.md",
+      "provenance.yaml"
+    ],
+    "landing": "landing.html",
+    "deck": "launch.pptx"
+  },
+  "errors": [],
+  "warnings": [
+    "LIMIT story: 19 words (recommended ≥ 40)",
+    "landing product_details: 7 rows (layout balanced for 8–14); unknown values are left out, never guessed",
+    "landing cta_link: no MODY product URL in sources (mody_listing); the CTA has no target",
+    "PRESENTATION_TEXT_OVERFLOW_RISK: cover.product_name needs ~2 lines, box fits ~1; shorten the text",
+    "PRESENTATION_TEXT_OVERFLOW_RISK: cover.launch_statement needs ~2 lines, box fits ~1; shorten the text",
+    "PRESENTATION_TEXT_OVERFLOW_RISK: overview.lines needs ~5 lines, box fits ~4; shorten the text",
+    "PRESENTATION_TEXT_OVERFLOW_RISK: overview.key_facts needs ~14 lines, box fits ~5; shorten the text",
+    "PRESENTATION_TEXT_OVERFLOW_RISK: positioning.statement needs ~6 lines, box fits ~5; shorten the text",
+    "PRESENTATION_TEXT_OVERFLOW_RISK: audience.private needs ~6 lines, box fits ~3; shorten the text",
+    "PRESENTATION_TEXT_OVERFLOW_RISK: audience.architect needs ~6 lines, box fits ~3; shorten the text",
+    "PRESENTATION_TEXT_OVERFLOW_RISK: audience.sales needs ~11 lines, box fits ~3; shorten the text",
+    "PRESENTATION_TEXT_OVERFLOW_RISK: messaging.key_messages needs ~3 lines, box fits ~2; shorten the text",
+    "PRESENTATION_TEXT_OVERFLOW_RISK: messaging.do_dont needs ~3 lines, box fits ~1; shorten the text",
+    "PRESENTATION_TEXT_OVERFLOW_RISK: story.text needs ~6 lines, box fits ~4; shorten the text",
+    "PRESENTATION_TEXT_OVERFLOW_RISK: story.fact_benefit needs ~10 lines, box fits ~4; shorten the text",
+    "PRESENTATION_TEXT_OVERFLOW_RISK: cheat.when needs ~11 lines, box fits ~4; shorten the text",
+    "PRESENTATION_TEXT_OVERFLOW_RISK: cheat.how needs ~18 lines, box fits ~4; shorten the text",
+    "PRESENTATION_TEXT_OVERFLOW_RISK: cheat.remember needs ~23 lines, box fits ~4; shorten the text",
+    "PRESENTATION_TEXT_OVERFLOW_RISK: launch.1.text needs ~7 lines, box fits ~5; shorten the text",
+    "PRESENTATION_TEXT_OVERFLOW_RISK: launch.next_step needs ~4 lines, box fits ~1; shorten the text"
+  ],
+  "report": "/Users/ilanaestrin/Desktop/mody/mody-launch/out/gessi-jacqueline-77201/generation_report.json",
+  "markdown_qa_detail": {
+    "status": "PASS",
+    "checks": {
+      "files_present": "PASS",
+      "provenance_valid": "PASS",
+      "provenance_shape": "PASS",
+      "voice_landing.md": "PASS",
+      "voice_deck.md": "PASS",
+      "voice_sales.md": "PASS",
+      "constraints_landing.md": "PASS",
+      "constraints_deck.md": "PASS",
+      "constraints_sales.md": "PASS",
+      "line_isolation_landing.md": "PASS",
+      "line_isolation_deck.md": "PASS",
+      "line_isolation_sales.md": "PASS",
+      "headline_length": "PASS",
+      "deck_structure": "PASS",
+      "landing_structure": "PASS",
+      "sales_structure": "PASS",
+      "flags_in_landing.md": "PASS",
+      "flags_in_deck.md": "PASS",
+      "flags_in_sales.md": "PASS",
+      "price_exact": "PASS",
+      "no_invented_numbers": "PASS",
+      "provenance_refs_resolve": "PASS",
+      "claims_used_integrity": "PASS",
+      "provenance_bound": "PASS",
+      "positioning": "PASS",
+      "versions_match": "PASS",
+      "draft_banner_landing.md": "PASS",
+      "draft_banner_deck.md": "PASS",
+      "draft_banner_sales.md": "PASS",
+      "qa_footer_landing.md": "PASS",
+      "qa_footer_deck.md": "PASS",
+      "qa_footer_sales.md": "PASS"
+    },
+    "fails": []
+  }
+}

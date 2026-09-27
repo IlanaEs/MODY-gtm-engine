@@ -1,9 +1,12 @@
 """CLI for the launch package.
-  python -m launch generate --name "<product name>" --url <supplier product page> --image <approved image>
+  python -m launch generate --name "<product name>" --url <supplier product page> [--image <approved image>]
+                            [--approve-page-image] [--render auto|never|always]
                             [--id <id>] [--brand <id>] [--category <category>] [--price-ils N --price-tier core|premium|signature]
                             [--engine auto|rules|claude] [--force]
-      the whole pipeline from the three GTM inputs: fetch + extract facts -> products/<id>.yaml -> validate ->
-      content engine -> out/<id>/launch_package.yaml -> package QA + readiness -> landing.html + launch.pptx -> generation_report.json
+      the whole pipeline from the three GTM inputs: fetch (static, else browser-rendered) + extract facts -> products/<id>.yaml
+      -> validate -> content engine -> out/<id>/launch_package.yaml -> package QA + readiness -> landing.html + launch.pptx
+      -> generation_report.json. Without --image the product photo on the page is downloaded to assets/<id>/ with its URL
+      as provenance; it counts as approved only with --approve-page-image (MODY sign-off).
   python -m launch intake <id> --name "<product name>" --url <supplier product page> --image <approved image path>
                           [--brand <brand id>] [--category <category>]     # writes products/<id>.yaml (inputs only, no facts invented)
   python -m launch skeleton products/<id>.yaml            # facts + structure prefilled -> the Skill fills the derived fields
@@ -57,18 +60,24 @@ def generate(argv):
     from validate import validate
     from launch import extract as X, content_engine as CE, qa as pkgqa
     ap = argparse.ArgumentParser(prog="python -m launch generate")
-    ap.add_argument("--name", required=True); ap.add_argument("--url", required=True); ap.add_argument("--image", required=True)
+    ap.add_argument("--name", required=True); ap.add_argument("--url", required=True)
+    ap.add_argument("--image", help="approved product image (png/jpg). Omitted: the page's product photo is downloaded to assets/<id>/")
+    ap.add_argument("--approve-page-image", action="store_true", help="MODY sign-off for the downloaded page image (sources.image_approved: true)")
+    ap.add_argument("--render", choices=["auto", "never", "always"], default="auto", help="browser-rendered fetch: auto = only when the static HTML has no facts")
     ap.add_argument("--id"); ap.add_argument("--brand"); ap.add_argument("--category")
     ap.add_argument("--price-ils", type=float); ap.add_argument("--price-tier", choices=["core", "premium", "signature"])
     ap.add_argument("--engine", choices=["auto", "rules", "claude"], default="auto")
     ap.add_argument("--force", action="store_true", help="overwrite an existing products/<id>.yaml and out/<id>/")
     ap.add_argument("--out-root", default=os.path.join(ROOT, "out"), help=argparse.SUPPRESS)
     ap.add_argument("--products-root", default=os.path.join(ROOT, "products"), help=argparse.SUPPRESS)
+    ap.add_argument("--assets-root", default=os.path.join(ROOT, "assets"), help=argparse.SUPPRESS)
     a = ap.parse_args(argv)
+    if a.price_ils is not None and float(a.price_ils).is_integer():
+        a.price_ils = int(a.price_ils)                       # "5000" stays 5000 (house price format), never 5000.0
     report = {"inputs": {"name": a.name, "url": a.url, "image": a.image}, "stages": {}}
-    # 1-4. fetch, extract, normalise, provenance
+    # 1-4. fetch (static, else browser-rendered), extract, normalise, provenance
     try:
-        ex = X.extract(a.url, a.name)
+        ex = X.extract(a.url, a.name, render=a.render)
     except Exception as e:
         report["stages"]["extraction"] = f"failed: {type(e).__name__}: {e}"
         print(json.dumps(report, ensure_ascii=False, indent=2)); return 1
@@ -78,12 +87,30 @@ def generate(argv):
     out_dir = os.path.join(a.out_root, pid) + os.sep
     if os.path.exists(ppath) and not a.force:
         print(f"exists: {ppath} (use --force to regenerate)", file=sys.stderr); return 1
-    doc = X.product_file(pid, a.name, a.url, a.image, ex, brand=brand, category=a.category, price_ils=a.price_ils, price_tier=a.price_tier)
+    if os.path.exists(ppath) and not os.access(ppath, os.W_OK):
+        print(f"read-only: {ppath} (a frozen product file; make it writable or generate under another --id)", file=sys.stderr); return 1
+    os.makedirs(out_dir, exist_ok=True)
+    snapshot = os.path.join(out_dir, "product_page.html")           # what was actually read (static or rendered DOM)
+    with open(snapshot, "w", encoding="utf-8") as fh:
+        fh.write(ex["html"])
+    snapshot_rel = os.path.relpath(snapshot, ROOT) if os.path.abspath(snapshot).startswith(os.path.abspath(ROOT) + os.sep) else snapshot
+    # the hero image: the approved input, else the page's own product photo (provenance = its URL; approval = --approve-page-image)
+    image, image_source, approved = a.image, None, True
+    if not a.image:
+        hero = X.download_hero(ex["hero_candidates"], os.path.join(a.assets_root, pid), f"{pid}_hero")
+        if hero:
+            image, image_source, approved = hero["path"], hero["source_url"], bool(a.approve_page_image)
+        report["stages"]["image"] = {**(hero or {"path": None}), "approved": approved,
+                                     "note": (hero or {}).get("note") or "no product photo of usable size found on the page: hero image missing"}
+    doc = X.product_file(pid, a.name, a.url, image, ex, brand=brand, category=a.category, price_ils=a.price_ils, price_tier=a.price_tier,
+                         approved=approved, image_source=image_source, snapshot=snapshot_rel)
     os.makedirs(os.path.dirname(ppath), exist_ok=True)
     with open(ppath, "w", encoding="utf-8") as fh:
         fh.write("# generated by `python -m launch generate`: facts extracted from sources.product_page (evidence per field); no value without a source\n")
         yaml.safe_dump(doc, fh, allow_unicode=True, sort_keys=False)
-    report["stages"]["extraction"] = {"product_file": ppath, "facts": sorted(ex["facts"]), "category": ex["category"], "brand": ex["brand"], "line": ex["line"], "unmapped": ex["unmapped"][:10]}
+    report["stages"]["extraction"] = {"product_file": ppath, "fetch": ex["fetch"], "renderer": ex["renderer"], "render_error": ex["render_error"],
+                                      "snapshot": snapshot_rel, "facts": sorted(ex["facts"]), "category": ex["category"], "brand": ex["brand"],
+                                      "line": ex["line"], "unmapped": ex["unmapped"][:10]}
     v = validate(ppath)
     report["stages"]["validation"] = {"status": v["status"], "errors": v["errors"], "flags": v["flags"], "publishable": v["publishable"]}
     os.makedirs(out_dir, exist_ok=True)
@@ -102,7 +129,9 @@ def generate(argv):
     ok = r["package"] == "generated" and r["landing"] == "generated" and r["deck"] == "generated" and r["markdown_qa"] == "PASS"
     report["result"] = "generated" if ok else ("not_ready" if (r.get("readiness") or {}).get("status") == "not_ready" else "failed")
     _write_report(out_dir, report)
-    print(yaml.safe_dump({"product": pid, "result": report["result"], "engine": crep["engine"], "fallback": crep["fallback"],
+    print(yaml.safe_dump({"product": pid, "result": report["result"], "fetch": ex["fetch"] + (f" ({ex['renderer']})" if ex["renderer"] else ""),
+                          "facts": sorted(ex["facts"]), "image": report["stages"].get("image", {"path": a.image, "approved": True}),
+                          "engine": crep["engine"], "fallback": crep["fallback"],
                           "package_qa": report["stages"]["pipeline"]["qa"], "files": r["files"], "errors": r["errors"]}, allow_unicode=True, sort_keys=False, width=120))
     return 0 if ok else 1
 
